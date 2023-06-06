@@ -9,22 +9,20 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('productos', function (Blueprint $table) {
-            $table->unsignedBigInteger('categorias_id')->nullable(1); // Asegúrate de que la columna sea nullable si es necesario
+            $table->foreignId('tipoproductos_id')->nullable()->change();
         });
     }
-    
 
     /**
      * Reverse the migrations.
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('productos', function (Blueprint $table) {
-            $table->dropColumn('categorias_id');
+            $table->foreignId('tipoproductos_id')->change();
         });
     }
-    
 };
