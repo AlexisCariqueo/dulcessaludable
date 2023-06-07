@@ -60,6 +60,11 @@ class Producto extends Model
         return $this->categorias_id == 1;
     }
 
+    public function setPrecioAttribute($value)
+    {
+        $this->attributes['precio'] = intval($value);
+    }
+
     
 
 }
