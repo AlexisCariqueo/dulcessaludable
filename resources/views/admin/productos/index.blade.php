@@ -15,36 +15,38 @@
                     <a href="{{ route('admin.productos.create') }}" class="btn btn-success float-end">Crear Producto</a>
                 </div>
                 <div class="card-body">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Nombre</th>
-                                <th>Precio</th>
-                                <th>Stock</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($productos as $producto)
-                            <tr>
-                                <td>{{ $producto->id }}</td>
-                                <td>{{ $producto->name }}</td>
-                                <td>${{ $producto->precio }}</td>
-                                <td>{{ $producto->stock }}</td>
-                                <td>
-                                    <a href="{{ route('admin.productos.show', $producto->id) }}" class="btn btn-sm btn-success">Ver</a>
-                                    <a href="{{ route('admin.productos.edit', $producto->id) }}" class="btn btn-sm btn-primary">Editar</a>
-                                    <form action="{{ route('admin.productos.destroy', $producto->id) }}" method="POST" style="display: inline;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar este producto?')">Eliminar</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+                    <div class="table-responsive"> 
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nombre</th>
+                                    <th>Precio</th>
+                                    <th>Stock</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($productos as $producto)
+                                <tr>
+                                    <td>{{ $producto->id }}</td>
+                                    <td>{{ $producto->name }}</td>
+                                    <td>${{ $producto->precio }}</td>
+                                    <td>{{ $producto->stock }}</td>
+                                    <td>
+                                        <a href="{{ route('admin.productos.show', $producto->id) }}" class="btn btn-sm btn-success">Ver</a>
+                                        <a href="{{ route('admin.productos.edit', $producto->id) }}" class="btn btn-sm btn-primary">Editar</a>
+                                        <form action="{{ route('admin.productos.destroy', $producto->id) }}" method="POST" style="display: inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar este producto?')">Eliminar</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
