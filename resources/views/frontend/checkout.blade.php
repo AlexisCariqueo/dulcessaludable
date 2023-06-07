@@ -113,7 +113,7 @@
                     @csrf
                     <div class="button-container">
                         <button type="submit" class="custom-button" name="payment-method" value="transferencia">
-                            <img src="{{ asset('storage/tienda/logo-transferencia.png') }}" alt="Botón 2">
+                            <img src="{{ asset('/storage/storage/tienda/logo-transferencia.png') }}" alt="Botón 2">
                         </button>
                     </div>
                 </form>
