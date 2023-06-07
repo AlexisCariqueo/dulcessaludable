@@ -2,7 +2,7 @@
   <style>
       #intro {
           margin-top: 0;
-          background-image: url('{{ asset('storage/tienda/fondo.jpg') }}');
+          background-image: url('{{ asset('storage/storage/tienda/fondo.jpg') }}');
           background-repeat: no-repeat;
           background-size: cover;
           background-color: #f4b5a7;
