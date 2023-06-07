@@ -15,9 +15,7 @@
                 min-height: 100vh;
                 background-image: url('/storage/storage/tienda/fondo.jpg');
             }
-        
-
-
+                   
             .content-container {
                 flex-grow: 1;
             }
