@@ -103,7 +103,7 @@
                     <!-- Otros campos del formulario aquí -->
                     <div class="button-container">
                         <button type="submit" class="custom-button" name="payment-method" value="flow">
-                            <img src="{{ asset('storage/tienda/flow-manualesdigitales.jpg') }}" alt="Botón 1">
+                            <img src="{{ asset('/storage/storage/tienda/flow-manualesdigitales.jpg') }}" alt="Botón 1">
                         </button>
                     </div>
                 </form> --}}
@@ -113,7 +113,7 @@
                     @csrf
                     <div class="button-container">
                         <button type="submit" class="custom-button" name="payment-method" value="transferencia">
-                            <img src="{{ asset('storage/tienda/logo-transferencia.png') }}" alt="Botón 2">
+                            <img src="{{ asset('/storage/storage/tienda/logo-transferencia.png') }}" alt="Botón 2">
                         </button>
                     </div>
                 </form>
@@ -134,24 +134,24 @@
 
 <style>
     .button-container {
-        display: flex; /* Muestra los botones en línea */
-        justify-content: center; /* Alinea los botones horizontalmente */
-        align-items: center; /* Alinea los botones verticalmente */
+        display: flex; 
+        justify-content: center;
+        align-items: center; 
     }
 
     .custom-button {
-        padding: 0; /* Elimina el relleno del botón */
-        border: none; /* Elimina el borde del botón */
-        margin-right: 10px; /* Espacio entre los botones */
+        padding: 0; 
+        border: none; 
+        margin-right: 10px; 
     }
 
     .custom-button:last-child {
-        margin-right: 0; /* No se aplica margen al último botón */
+        margin-right: 0; 
     }
 
     .custom-button img {
-        width: 200px; /* Ajusta el ancho de la imagen según tus necesidades */
-        height: auto; /* Ajusta la altura de la imagen de forma proporcional */
+        width: 200px; 
+        height: auto; 
     }
 </style>
 
