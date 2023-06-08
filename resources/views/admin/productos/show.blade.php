@@ -15,7 +15,7 @@
             <h4>Stock disponible: {{ $producto->stock }}</h4>
         </div>
         <div class="col-md-6">
-            <div id="carouselExampleControls" class="carousel slide shadow rounded" data-bs-ride="carousel" style="max-width: 400px;"> <!-- Ajusta el valor de max-width según lo desees -->
+            <div id="carouselExampleControls" class="carousel slide shadow rounded" data-bs-ride="carousel" style="max-width: 400px;">
                 <div class="carousel-inner">
                     @foreach($imagenes as $key => $imagen)
                         <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">

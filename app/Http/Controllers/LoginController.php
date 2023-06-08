@@ -45,8 +45,7 @@ use Illuminate\Support\Facades\Log;
         
             if (Auth::attempt($credentials)) {
                 $user = Auth::user();
-                Log::info('Stored hashed password for user ' . $user->email . ': ' . $user->password);
-                // Migrar el carrito de la sesión a la base de datos
+
                 $cartItems = session()->get('cart', []);
                 foreach ($cartItems as $item) {
                     $cartItem = CartItem::firstOrCreate(
@@ -131,7 +130,7 @@ use Illuminate\Support\Facades\Log;
             $request->only('name', 'email', 'password', 'password_confirmation', 'token'),
             function ($user, $password) {
                 $user->forceFill([
-                    'password' => $password // Aquí ya no es necesario usar Hash::make si lo manejas en el modelo
+                    'password' => $password 
                 ])->setRememberToken(Str::random(60));
     
                 $user->save();
