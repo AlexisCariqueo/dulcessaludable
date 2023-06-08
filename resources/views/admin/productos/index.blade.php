@@ -1,5 +1,7 @@
 @extends('layouts.admin-plantilla')
-
+@php
+    use Illuminate\Support\Str;
+@endphp
 @section('content')
 
 <head>
@@ -23,6 +25,9 @@
                                     <th>Nombre</th>
                                     <th>Precio</th>
                                     <th>Stock</th>
+                                    <th>Descripción</th>
+                                    <th>Fecha de Creación</th>
+                                    <th>Fecha de Actualización</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
@@ -33,6 +38,9 @@
                                     <td>{{ $producto->name }}</td>
                                     <td>${{ $producto->precio }}</td>
                                     <td>{{ $producto->stock }}</td>
+                                    <td>{{ Str::limit($producto->descripcion, 20) }}</td>
+                                    <td>{{ $producto->created_at }}</td>
+                                    <td>{{ $producto->updated_at }}</td>
                                     <td>
                                         <a href="{{ route('admin.productos.show', $producto->id) }}" class="btn btn-sm btn-success">Ver</a>
                                         <a href="{{ route('admin.productos.edit', $producto->id) }}" class="btn btn-sm btn-primary">Editar</a>

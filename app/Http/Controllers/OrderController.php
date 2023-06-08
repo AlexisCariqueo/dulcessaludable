@@ -169,7 +169,7 @@ class OrderController extends Controller
             'estado' => $request->estado,
         ]);
     
-        if ($request->estado == 'enviado') {
+        if ($request->estado == 'enviando') { // Cambiado a 'enviando'
             Mail::to($order->user->email)->send(new OrderShipped($order));
             Mail::to('panaderiaypasteleria.olivias@gmail.com')->send(new OrderShipped($order));
     
@@ -183,6 +183,8 @@ class OrderController extends Controller
     
         return redirect()->route('admin.ordenes.index', $order)->with('status', 'Estado de la orden actualizado con éxito.');
     }
+    
+    
     
     
     

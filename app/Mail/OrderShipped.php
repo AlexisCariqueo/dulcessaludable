@@ -27,9 +27,11 @@ class OrderShipped extends Mailable
                 'order' => $this->order,
                 'user' => $this->order->user,
                 'direccion' => $this->order->user->direccion,
-                'telefono' => $this->order->user->telefono,
-                'orderItems' => $this->order->productos,
+                'telefono' => $this->order->user->direccion->numero,
+                'orderItems' => $this->order->orderItems()->with('producto')->get(),
             ]);
     }
+    
+    
     
 }

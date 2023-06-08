@@ -37,12 +37,12 @@
                     Detalles de los Productos
                 </div>
                 <div class="card-body">
-                    @foreach($order->productos as $product)
-                        <p>Nombre del Producto: {{ $product->nombre }}</p>
-                        <p>Cantidad: {{ $product->cantidad }}</p>
-                        <p>Precio: {{ $product->precio }}</p>
+                    @foreach($order->orderItems as $item)
+                        <p>Nombre del Producto: {{ $item->producto->name }}</p>
+                        <p>Cantidad: {{ $item->cantidad }}</p>
+                        <p>Precio: {{ $item->producto->precio }}</p>
                     @endforeach
-                </div>
+                </div>                            
             </div>
 
             <div class="card">
