@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h1 class="mt-4">Editar producto</h1>
+            <h1 class="mt-4">Editar Producto</h1>
             <a href="{{ route('admin.productos.index') }}" class="btn btn-primary">Regresar</a>
             <form action="{{ route('admin.productos.update', $producto->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -23,7 +23,7 @@
                 <div class="mb-3">
                     <label for="categorias_id" class="form-label">Categoría</label>
                     <select class="form-select" id="categorias_id" name="categorias_id" required>
-                        <option value="">Seleccione una categoría</option>
+                        <option value="">Seleccione una Categoría</option>
                         @foreach ($categorias as $categoria)
                             <option value="{{ $categoria->id }}" {{ $producto->categorias_id == $categoria->id ? 'selected' : '' }}>{{ $categoria->nombre }}</option>
                         @endforeach
@@ -49,11 +49,11 @@
                 @endforeach
 
                 <div class="mb-3">
-                    <label for="imagenes">Agregar imágenes</label>
+                    <label for="imagenes">Agregar Imágenes</label>
                     <input type="file" name="imagenes[]" multiple>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
             </form>
         </div>
     </div>

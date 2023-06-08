@@ -14,7 +14,7 @@
 @endif
         <div class="col-12">
             <a href="{{ route('admin.productos.index') }}" class="btn btn-primary">Regresar</a>
-            <h1 class="mt-4">Agregar producto</h1>
+            <h1 class="mt-4">Agregar Producto</h1>
 
             <form action="{{ route('admin.productos.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -32,7 +32,7 @@
                 <div class="mb-3">
                     <label for="categorias_id" class="form-label">Categoría</label>
                     <select class="form-select" id="categorias_id" name="categorias_id" required>
-                        <option value="">Seleccione una categoría</option>
+                        <option value="">Seleccione una Categoría</option>
                         @foreach ($categorias as $categoria)
                         <option value="{{ $categoria->id }}" {{ old('categorias_id') == $categoria->id ? 'selected' : '' }}>
                             {{ $categoria->nombre }}
@@ -52,7 +52,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="imagen1" class="form-label">Imagen principal (obligatoria)</label>
+                    <label for="imagen1" class="form-label">Imagen Principal (Obligatoria)</label>
                     <input type="file" class="form-control" id="imagen1" name="imagenes[]" accept="image/*">
                 </div>
                 <div class="mb-3">
@@ -64,7 +64,7 @@
                     <input type="file" class="form-control" id="imagen3" name="imagenes[]" accept="image/*">
                 </div>
 
-                <button type="submit" class="btn btn-primary">Guardar producto</button>
+                <button type="submit" class="btn btn-primary">Guardar Producto</button>
             </form>
         </div>
     </div>

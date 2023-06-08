@@ -12,27 +12,27 @@
             
             <li class="nav-item">
                 <a class="nav-link text-white" data-bs-toggle="collapse" href="#tiendaMenu" role="button" aria-expanded="false" aria-controls="tiendaMenu">
-                    <i class="fas fa-store"></i><span class="d-none d-md-inline"> Tienda</span>
+                    <i class="fas fa-store"></i><span class="d-none d-md-inline"> Productos</span>
                 </a>
                 <div class="collapse" id="tiendaMenu">
                     <ul class="nav flex-column ms-3">
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="{{ route('admin.productos.create') }}"><i class="fas fa-plus"></i><span class="d-none d-md-inline"> Crear producto</span></a>
+                            <a class="nav-link text-white" href="{{ route('admin.productos.create') }}"><i class="fas fa-plus"></i><span class="d-none d-md-inline"> Crear Producto</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="{{ route('admin.productos.index') }}"><i class="fas fa-list"></i><span class="d-none d-md-inline"> Lista de productos</span></a>
+                            <a class="nav-link text-white" href="{{ route('admin.productos.index') }}"><i class="fas fa-list"></i><span class="d-none d-md-inline"> Lista de Productos</span></a>
                         </li>
                     </ul>
                 </div>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-white" data-bs-toggle="collapse" href="#OrdenMenu" role="button" aria-expanded="false" aria-controls="OrdenMenu">
-                    <i class="bi bi-list-ul"></i><span class="d-none d-md-inline"> Ordenes</span>
+                    <i class="bi bi-list-ul"></i><span class="d-none d-md-inline"> Órdenes</span>
                 </a>
                 <div class="collapse" id="OrdenMenu">
                     <ul class="nav flex-column ms-3">
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="{{ route('admin.ordenes.index') }}"><i class="fas fa-list"></i><span class="d-none d-md-inline"> Lista de Ordenes</span></a>
+                            <a class="nav-link text-white" href="{{ route('admin.ordenes.index') }}"><i class="fas fa-list"></i><span class="d-none d-md-inline"> Lista de Órdenes</span></a>
                         </li>
                     </ul>
                 </div>
@@ -44,10 +44,10 @@
                 <div class="collapse" id="usuariosMenu">
                     <ul class="nav flex-column ms-3">
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="{{ route('admin.users.create') }}"><i class="fas fa-user-plus"></i><span class="d-none d-md-inline"> Crear usuario</span></a>
+                            <a class="nav-link text-white" href="{{ route('admin.users.create') }}"><i class="fas fa-user-plus"></i><span class="d-none d-md-inline"> Crear Usuario</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="{{ route('admin.users.index') }}"><i class="fas fa-user"></i><span class="d-none d-md-inline"> Lista de usuarios</span></a>
+                            <a class="nav-link text-white" href="{{ route('admin.users.index') }}"><i class="fas fa-user"></i><span class="d-none d-md-inline"> Lista de Usuarios</span></a>
                         </li>
                     </ul>
                 </div>
@@ -59,10 +59,10 @@
                 <div class="collapse" id="blogMenu">
                     <ul class="nav flex-column ms-3">
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="{{ route('admin.blog.create') }}"><i class="fas fa-edit"></i><span class="d-none d-md-inline"> Crear entrada</span></a>
+                            <a class="nav-link text-white" href="{{ route('admin.blog.create') }}"><i class="fas fa-edit"></i><span class="d-none d-md-inline"> Crear Entrada</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="{{ route('admin.blog.index') }}"><i class="fas fa-list"></i><span class="d-none d-md-inline"> Lista de entradas</span></a>
+                            <a class="nav-link text-white" href="{{ route('admin.blog.index') }}"><i class="fas fa-list"></i><span class="d-none d-md-inline"> Lista de Entradas</span></a>
                         </li>
                     </ul>
                 </div>
@@ -74,10 +74,10 @@
                 <div class="collapse" id="categoriasBlogMenu">
                     <ul class="nav flex-column ms-3">
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="{{ route('admin.categorias-blog.create') }}"><i class="fas fa-plus-square"></i><span class="d-none d-md-inline"> Crear categoría</span></a>
+                            <a class="nav-link text-white" href="{{ route('admin.categorias-blog.create') }}"><i class="fas fa-plus-square"></i><span class="d-none d-md-inline"> Crear Categoría</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="{{ route('admin.categorias-blog.index') }}"><i class="fas fa-th-list"></i><span class="d-none d-md-inline"> Lista de categorías</span></a>
+                            <a class="nav-link text-white" href="{{ route('admin.categorias-blog.index') }}"><i class="fas fa-th-list"></i><span class="d-none d-md-inline"> Lista de Categorías</span></a>
                         </li>
                     </ul>
                 </div>
