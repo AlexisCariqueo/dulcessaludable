@@ -18,6 +18,7 @@
                 </div>                    
             </div>
             @endforeach
+            {{ $posts->links('pagination::bootstrap-5') }}
         </div>
         <div class="col-md-4">
             <div class="card my-4">
@@ -41,3 +42,14 @@
     </div>
 </div>
 @endsection
+<style>
+    .pagination .page-link {
+        color: rgb(0, 0, 0);
+        border: none; /* Agrega esta línea */
+    }
+
+    .pagination .page-item.active .page-link {
+        background-color: #b36b50;
+        border: none; /* Agrega esta línea */
+    }
+</style>

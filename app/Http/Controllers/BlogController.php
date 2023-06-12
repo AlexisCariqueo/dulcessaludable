@@ -12,9 +12,10 @@ class BlogController extends Controller
 {
     public function index()
     {
-        $posts = Post::with('user')->get();
+        $posts = Post::with('user')->paginate(10); 
         return view('admin.blog.index', compact('posts'));
     }
+    
     
 
     public function create()
@@ -93,10 +94,10 @@ class BlogController extends Controller
     
         $tags = $request->input('tags');
     
-        // Decodificamos primero las etiquetas, en caso de que ya estén en formato JSON
+        
         $tagsDecoded = json_decode($tags);
     
-        // Luego volvemos a codificar las etiquetas, ya sean arrays o strings
+        
         $tagsJson = json_encode(is_array($tagsDecoded) ? $tagsDecoded : explode(',', $tags));
     
         $post->tags = $tagsJson;
@@ -144,7 +145,7 @@ class BlogController extends Controller
 
     public function frontendIndex()
     {
-        $posts = Post::orderBy('created_at', 'desc')->paginate(10);
+        $posts = Post::orderBy('created_at', 'desc')->paginate(1);
         $categorias = CategoriaBlog::all();
         $mostViewedPosts = Post::orderBy('views', 'desc')->take(5)->get();
         return view('frontend.blog.index', compact('posts', 'categorias', 'mostViewedPosts'));
@@ -156,7 +157,7 @@ class BlogController extends Controller
     {   
         $post = Post::findOrFail($id);
 
-    // Borrar el archivo de imagen si existe
+    
         if ($post->featured_image && file_exists(public_path($post->featured_image))) {
         unlink(public_path($post->featured_image));
     }
@@ -169,37 +170,37 @@ class BlogController extends Controller
 
     public function recetas()
     {
-        // Obtén los posts de la categoría de recetas
-        $posts = Post::where('categoria_id', 1)->get();
+        
+        $posts = Post::where('categoria_id', 1)->paginate(3);
     
-        // Obtén los posts más vistos
+       
         $mostViewedPosts = Post::orderBy('views', 'desc')->take(5)->get();
     
-        // Devuelve la vista de recetas con los posts de recetas y los posts más vistos
+       
         return view('frontend.recetas', ['posts' => $posts, 'mostViewedPosts' => $mostViewedPosts]);
     }
 
     public function novedades()
     {
-        // Obtén los posts de la categoría de recetas
-        $posts = Post::where('categoria_id', 8)->get();
+        
+        $posts = Post::where('categoria_id', 8)->paginate(3);
     
-        // Obtén los posts más vistos
+        
         $mostViewedPosts = Post::orderBy('views', 'desc')->take(5)->get();
     
-        // Devuelve la vista de recetas con los posts de recetas y los posts más vistos
+       
         return view('frontend.novedades', ['posts' => $posts, 'mostViewedPosts' => $mostViewedPosts]);
     }
 
     public function noticias()
     {
-        // Obtén los posts de la categoría de recetas
-        $posts = Post::where('categoria_id', 7)->get();
+       
+        $posts = Post::where('categoria_id', 7)->paginate(3);
     
-        // Obtén los posts más vistos
+        
         $mostViewedPosts = Post::orderBy('views', 'desc')->take(5)->get();
     
-        // Devuelve la vista de recetas con los posts de recetas y los posts más vistos
+        
         return view('frontend.noticias', ['posts' => $posts, 'mostViewedPosts' => $mostViewedPosts]);
     }
     
@@ -208,12 +209,12 @@ class BlogController extends Controller
     {
         $query = $request->input('query');
         
-        // busca los posts cuyo nombre contiene la consulta
+       
         $posts = Post::where('title', 'LIKE', "%{$query}%")->get();
         
         $mostViewedPosts = Post::orderBy('views', 'desc')->take(5)->get();
 
-        // devuelve una vista con los resultados de la búsqueda y los posts más vistos
+       
         return view('frontend.search-results', ['posts' => $posts, 'mostViewedPosts' => $mostViewedPosts]);
     }
     

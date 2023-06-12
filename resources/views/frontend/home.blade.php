@@ -51,14 +51,12 @@
                                 <div class="carousel-inner">
                                     @foreach($producto->imagenes as $index => $imagen)
                                         <div class="carousel-item @if($index == 0) active @endif">
-                                            <!-- Añade un hipervínculo a la imagen -->
                                             <a href="{{ route('productos.show', $producto->id) }}">
                                                 <img src="{{ Storage::url($imagen->ruta_imagen) }}" class="card-img-top" alt="{{ $producto->name }}">
                                             </a>
                                         </div>
                                     @endforeach
                                 </div>
-                                <!-- Controles del carrusel (sin hipervínculos) -->
                                 <button class="carousel-control-prev" type="button" data-bs-target="#productoCarousel{{$producto->id}}" data-bs-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Anterior</span>
@@ -69,7 +67,6 @@
                                 </button>
                             </div>
                         @else
-                            <!-- Añade un hipervínculo a la imagen de relleno -->
                             <a href="{{ route('productos.show', $producto->id) }}">
                                 <img src="https://via.placeholder.com/150" class="card-img-top" alt="{{ $producto->name }}">
                             </a>
@@ -93,7 +90,7 @@
             @endforeach
         </div>
         @if ($productos instanceof \Illuminate\Pagination\LengthAwarePaginator)
-            {{ $productos->links() }}
+        {{ $productos->links('pagination::bootstrap-5') }}
         @endif
     </div>
 
@@ -105,31 +102,38 @@
         .boton-personalizado {
             background-color: #f18770;
             color: white;
-            border: 2px solid #f18770;  /* Define el grosor y color del borde aquí */
-            border-radius: 5px;  /* Define el radio del borde (esquinas redondeadas) aquí */
+            border: 2px solid #f18770;
+            border-radius: 5px; 
         }
     
         .boton-personalizado:hover {
             background-color: #b36b50;
             color: white;
-            border-color: #b36b50;  /* Cambia el color del borde en hover */
+            border-color: #b36b50;  
         }
     
         .sobre-nosotros {
             background-color: #f18770;
-            border: 2px solid #f18770;  /* Define el grosor y color del borde aquí */
-            border-radius: 5px;  /* Define el radio del borde (esquinas redondeadas) aquí */
+            border: 2px solid #f18770;  
+            border-radius: 5px;  
         }
     
         .sobre-nosotros:hover {
             background-color: #b36b50;
-            border-color: #b36b50;  /* Cambia el color del borde en hover */
+            border-color: #b36b50;  
+        }
+        .pagination .page-link {
+            color: rgb(0, 0, 0);
+            border: none; /* Agrega esta línea */
+        }
+
+        .pagination .page-item.active .page-link {
+            background-color: #b36b50;
+            border: none; /* Agrega esta línea */
         }
     </style>
     
-    
     <script>
-        // Desaparecer el mensaje después de 5 segundos (5000 milisegundos)
         setTimeout(function() {
             var orderPendingMessage = document.getElementById('order-pending-message');
             if (orderPendingMessage) {

@@ -91,7 +91,7 @@ class UserController extends Controller
     public function profile()
     {
         $user = Auth::user();
-        $order = $user->orders()->get();
+        $order = $user->orders()->paginate(5);
         $direccion = $user->direccion;  // Obtiene la dirección del usuario
         
         // Verifica si hay una orden no pagada

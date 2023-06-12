@@ -15,7 +15,7 @@ class OrderController extends Controller
     
     public function index()
     {
-        $orders = Order::all();
+        $orders = Order::paginate(10);
 
         $orderStatuses = ['pendiente', 'pagado', 'enviando', 'entregado'];
 

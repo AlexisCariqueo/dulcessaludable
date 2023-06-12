@@ -26,14 +26,14 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
 
-            <!-- Datos Personales -->
+           
             <div class="card mb-4">
                 <div class="card-header">Datos Personales</div>
 
                 <div class="card-body">
                     <h5>Nombre: {{ Auth::user()->name }}</h5>
                     <h5>Email: {{ Auth::user()->email }}</h5>
-                    <!-- Agrega aquí cualquier otro campo que quieras mostrar -->
+                    
 
                     <a href="{{ route('profile.edit') }}" class="btn btn-primary mt-3 btn-editar">Editar Perfil</a>
                     <a href="{{ route('password.change') }}" class="btn btn-primary mt-3 btn-cambiar">Cambiar Contraseña</a>
@@ -68,7 +68,6 @@
 </div>
 
 
-            <!-- Mis Órdenes -->
             <div class="card">
                 <div class="card-header">Mis Órdenes</div>
                 <div class="card-body">
@@ -89,23 +88,36 @@
                                         @if($orden->estado == null)
                                             <a href="{{ url('checkout-transferencia/' . $orden->id) }}" class="link-primary">Finalizar Compra</a>
                                         @else
-                                            <!-- Puedes agregar otras acciones aquí, como ver detalles de la orden -->
+                                            
                                         @endif
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
+                    {{ $order->links('pagination::bootstrap-5') }}
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+    <style>
+    .pagination .page-link {
+        color: rgb(0, 0, 0);
+        border: none; /* Agrega esta línea */
+    }
+
+    .pagination .page-item.active .page-link {
+        background-color: #b36b50;
+        border: none; /* Agrega esta línea */
+    }
+
+    </style>
 @endsection
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
-        // Desvanecer y ocultar el mensaje después de 5 segundos
         $(".alert").delay(5000).fadeOut(500, function() {
             $(this).remove();
         });

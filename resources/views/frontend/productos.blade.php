@@ -113,7 +113,7 @@
                     @endforeach
                 </div>
                 @if ($productos instanceof \Illuminate\Pagination\LengthAwarePaginator)
-                    {{ $productos->links() }}
+                {{ $productos->links('pagination::bootstrap-5') }}
                 @endif
             </div>
         </div>
@@ -140,6 +140,16 @@
             color: #fff;
             border: none;
         /* Otros estilos personalizados que desees aplicar */
+        }
+
+        .pagination .page-link {
+            color: rgb(0, 0, 0);
+            border: none; /* Agrega esta línea */
+        }
+
+        .pagination .page-item.active .page-link {
+            background-color: #b36b50;
+            border: none; /* Agrega esta línea */
         }
 
     </style>
@@ -173,7 +183,7 @@
             });
         });
 
-        // Mostrar todos los productos
+
         var todosProductosFilter = document.getElementById('todosProductosFilter');
         todosProductosFilter.addEventListener('change', function() {
             cardContainers.forEach(function(cardContainer) {
