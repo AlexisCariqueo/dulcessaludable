@@ -145,7 +145,7 @@ class BlogController extends Controller
 
     public function frontendIndex()
     {
-        $posts = Post::orderBy('created_at', 'desc')->paginate(1);
+        $posts = Post::orderBy('created_at', 'desc')->paginate(10);
         $categorias = CategoriaBlog::all();
         $mostViewedPosts = Post::orderBy('views', 'desc')->take(5)->get();
         return view('frontend.blog.index', compact('posts', 'categorias', 'mostViewedPosts'));

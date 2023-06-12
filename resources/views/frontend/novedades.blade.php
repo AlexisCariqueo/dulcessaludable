@@ -23,7 +23,7 @@
         <div class="col-md-4">
             <div class="card my-4">
                 <a href="{{ route('tienda.index') }}">
-                    <img class="card-img-top" src="{{ asset('storage/blog/irtienda.jpg') }}" alt="Imagen de la tienda">
+                    <img class="card-img-top" src="{{ asset('storage/storage/blog/irtienda.jpg') }}" alt="Imagen de la tienda">
                 </a>                               
                 <h5 class="card-header">Posts más vistos</h5>
                 <div class="card-body">
