@@ -21,7 +21,7 @@
             {{ $posts->links('pagination::bootstrap-5') }}
         </div>
         <div class="col-md-4">
-            <div class="card my-4">
+            <div class="card my-3">
                 <a href="{{ route('tienda.index') }}">
                     <img class="card-img-top" src="{{ asset('storage/storage/blog/irtienda.jpg') }}" alt="Imagen de la tienda">
                 </a>                               
