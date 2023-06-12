@@ -1,5 +1,7 @@
 @extends('layouts.tienda-plantilla')
-
+@php
+    use Illuminate\Support\Str;
+@endphp
 @section('content')
 
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
@@ -73,7 +75,7 @@
                         @endif
                         <div class="card-body">
                             <h5 class="card-title">{{ $producto->name }}</h5>
-                            <p class="card-text">{{ $producto->descripcion }}</p>
+                            <td>{{ Str::limit($producto->descripcion, 20) }}</td>
                             <h5>${{ $producto->precio }}</h5>
                             <form action="{{ route('cart.add', $producto->id) }}" method="POST">
                                 @csrf

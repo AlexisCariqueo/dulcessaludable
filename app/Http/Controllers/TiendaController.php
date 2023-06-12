@@ -9,7 +9,9 @@ class TiendaController extends Controller
 {
     public function index()
     {
-        $productos = Producto::paginate(1);
+        $productos = Producto::orderBy('updated_at', 'desc')
+                    ->orderBy('stock', 'desc')
+                    ->paginate(10);
         return view('frontend.home', compact('productos'));
     }
     
@@ -18,13 +20,19 @@ class TiendaController extends Controller
         $filtro = $request->input('filtro');
     
         if ($filtro === 'todos') {
-            $productos = Producto::paginate(1);
+            $productos = Producto::orderBy('updated_at', 'desc')
+                    ->orderBy('stock', 'desc')
+                    ->paginate(10);
         } else {
-            $productos = Producto::where('stock', '>', 0)->paginate(1);
+            $productos = Producto::where('stock', '>', 0)
+                    ->orderBy('updated_at', 'desc')
+                    ->orderBy('stock', 'desc')
+                    ->paginate(10);
         }
     
         return view('frontend.productos', compact('productos'));
     }
+    
     
 
 }

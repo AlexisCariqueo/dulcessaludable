@@ -149,24 +149,8 @@ class ProductoController extends Controller
 
     public function frontendIndex()
     {
-
-        
-        $sort_by = request()->get('sort_by');
-
-        switch ($sort_by) {
-            case 'price_asc':
-                $productos = Producto::orderBy('precio')->paginate(10);
-                break;
-            case 'price_desc':
-                $productos = Producto::orderBy('precio', 'desc')->paginate(10);
-                break;
-            default:
-                $productos = Producto::paginate(10);
-                break;
-        }
-
-        return view('tienda.index', compact('productos'));
+ 
     }
-
+    
     
 }
