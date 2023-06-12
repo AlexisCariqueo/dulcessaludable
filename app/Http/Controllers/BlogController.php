@@ -170,39 +170,48 @@ class BlogController extends Controller
 
     public function recetas()
     {
-        
-        $posts = Post::where('categoria_id', 3)->paginate(3);
+        $posts = Post::where('categoria_id', 3)
+                     ->where('status', 'publicado')
+                     ->paginate(3);
     
-       
-        $mostViewedPosts = Post::orderBy('views', 'desc')->take(5)->get();
+        $mostViewedPosts = Post::orderBy('views', 'desc')
+                               ->where('status', 'publicado')
+                               ->take(5)
+                               ->get();
     
-       
         return view('frontend.recetas', ['posts' => $posts, 'mostViewedPosts' => $mostViewedPosts]);
     }
+    
 
     public function novedades()
     {
-        
-        $posts = Post::where('categoria_id', 2)->paginate(3);
+        $posts = Post::where('categoria_id', 2)
+                     ->where('status', 'publicado')
+                     ->paginate(3);
     
-        
-        $mostViewedPosts = Post::orderBy('views', 'desc')->take(5)->get();
+        $mostViewedPosts = Post::orderBy('views', 'desc')
+                               ->where('status', 'publicado')
+                               ->take(5)
+                               ->get();
     
-       
         return view('frontend.novedades', ['posts' => $posts, 'mostViewedPosts' => $mostViewedPosts]);
     }
+    
 
     public function noticias()
     {
-       
-        $posts = Post::where('categoria_id', 1)->paginate(3);
+        $posts = Post::where('categoria_id', 1)
+                     ->where('status', 'publicado')
+                     ->paginate(3);
     
-        
-        $mostViewedPosts = Post::orderBy('views', 'desc')->take(5)->get();
+        $mostViewedPosts = Post::orderBy('views', 'desc')
+                               ->where('status', 'publicado')
+                               ->take(5)
+                               ->get();
     
-        
         return view('frontend.noticias', ['posts' => $posts, 'mostViewedPosts' => $mostViewedPosts]);
     }
+    
     
     
     public function search(Request $request)
