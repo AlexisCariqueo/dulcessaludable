@@ -171,7 +171,7 @@ class BlogController extends Controller
     public function recetas()
     {
         
-        $posts = Post::where('categoria_id', 1)->paginate(3);
+        $posts = Post::where('categoria_id', 3)->paginate(3);
     
        
         $mostViewedPosts = Post::orderBy('views', 'desc')->take(5)->get();
@@ -183,7 +183,7 @@ class BlogController extends Controller
     public function novedades()
     {
         
-        $posts = Post::where('categoria_id', 8)->paginate(3);
+        $posts = Post::where('categoria_id', 2)->paginate(3);
     
         
         $mostViewedPosts = Post::orderBy('views', 'desc')->take(5)->get();
@@ -195,7 +195,7 @@ class BlogController extends Controller
     public function noticias()
     {
        
-        $posts = Post::where('categoria_id', 7)->paginate(3);
+        $posts = Post::where('categoria_id', 1)->paginate(3);
     
         
         $mostViewedPosts = Post::orderBy('views', 'desc')->take(5)->get();
