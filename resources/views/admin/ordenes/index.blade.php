@@ -49,12 +49,12 @@
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-sm btn-danger">
-                                                    <i class="fas fa-trash"></i> <!-- Icono de basura -->
+                                                    <i class="fas fa-trash"></i> 
                                                 </button>
                                             </form>
                                         @else
                                         <a href="{{ route('admin.order.show', $order->id) }}" class="btn btn-sm btn-info">
-                                            <i class="fas fa-eye"></i> <!-- Icono de vista -->
+                                            <i class="fas fa-eye"></i> 
                                         </a>                                        
                                         @endif
                                     </td>                                    

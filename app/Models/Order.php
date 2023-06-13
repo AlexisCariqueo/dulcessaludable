@@ -44,6 +44,18 @@ class Order extends Model
         return $this->belongsToMany(Producto::class, 'order_items', 'order_id', 'productos_id')->withPivot('cantidad', 'precio');
     }
 
+    protected static function booted()
+    {
+        static::deleting(function ($order) {
+            foreach ($order->orderItems as $item) {
+                $product = $item->producto;
+                $product->stock += $item->cantidad;
+                $product->save();
+            }
+        });
+    }
+
+
 
 
 }

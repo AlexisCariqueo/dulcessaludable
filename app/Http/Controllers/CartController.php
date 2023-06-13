@@ -46,6 +46,7 @@ class CartController extends Controller
     public function addToCart(Request $request)
     {
         $productId = $request->input('productos_id');
+        $quantity = $request->input('cantidad'); // obtén la cantidad del formulario
         $product = Producto::find($productId);
     
         if (!$product) {
@@ -60,31 +61,32 @@ class CartController extends Controller
                 ['quantity' => 0]
             );
     
-            if ($cartItem->quantity + 1 > $product->stock) {
+            if ($cartItem->quantity + $quantity > $product->stock) {
                 return redirect()->back()->with('error', 'La cantidad ingresada supera la cantidad en stock.');
             }
     
-            $cartItem->increment('quantity');
+            $cartItem->increment('quantity', $quantity); // incrementa en 'quantity' y no en 1
         } else {
             $cart = session()->get('cart', []);
             $cartItem = array_key_exists($productId, $cart)
                 ? $cart[$productId]
                 : ['id' => $product->id, 'name' => $product->name, 'quantity' => 0, 'price' => $product->precio];
     
-            if ($cartItem['quantity'] + 1 > $product->stock) {
+            if ($cartItem['quantity'] + $quantity > $product->stock) {
                 return redirect()->back()->with('error', 'La cantidad ingresada supera la cantidad en stock.');
             }
     
-            $cartItem['quantity']++;
+            $cartItem['quantity'] += $quantity; // incrementa en 'quantity' y no en 1
             $cart[$productId] = $cartItem;
             session()->put('cart', $cart);
         }
     
         $cartCount = session()->get('cartCount', 0);
-        session()->put('cartCount', $cartCount + 1);
+        session()->put('cartCount', $cartCount + $quantity); // incrementa en 'quantity' y no en 1
     
         return redirect()->back()->with('success', 'Producto agregado al carrito.');
     }
+    
     
 
     public function removeFromCart($itemId)
@@ -192,7 +194,7 @@ class CartController extends Controller
     }
     
     public function createOrder() {
-        // Aquí iría el código para crear una orden a partir de los productos en el carrito del usuario
+        
         $user = Auth::user();
     
         $cartItems = CartItem::where('user_id', $user->id)->get();

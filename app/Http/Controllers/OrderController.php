@@ -143,7 +143,7 @@ class OrderController extends Controller
             Mail::to('panaderiaypasteleria.olivias@gmail.com')->send(new OrderCompleted($order, $order->user, $orderItems));
         }
     
-        // Redirige a la vista de confirmación, o donde desees.
+        // Redirige a la vista de confirmación.
         return redirect()->route('confirmation.view');
     }
     

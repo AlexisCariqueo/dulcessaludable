@@ -3,7 +3,6 @@
 @section('content')
 <div class="container">
 
-    <!-- Detalles de la Orden -->
     <div class="card mt-3">
         <div class="card-header">
             <h3>Detalles de la Orden</h3>
@@ -45,19 +44,18 @@
                     <p>Cuenta Bancaria: 123456789</p>
                     <p>Tipo de Cuenta: Cuenta Corriente</p>
                     <p>Nombre: Olivia Pastelera</p>
-                    <p>Correo: Olivia@panaderia.cl</p>
+                    <p>Correo: panaderiaypasteleria.olivias@gmail.com</p>
                 </div>
             </div>
         </div>
         <div class="col-md-6">
-            <!-- Método de Pago -->
             <div class="card">
                 <div class="card-header">
                     <h3>Comprobante de Pago</h3>
                 </div>
                 <div class="card-body">
                     <p>*Debes Subir el comprobante de pago de su transferencia, el que se genera al finalizar el pago</p>
-                    <p>*Recuerda que debe aparecer el valor el correo de la empresa y su quiere puedes poner en comentarios el N de Orden</p>
+                    <p>*Recuerda que debe aparecer el valor, el correo de la empresa y si quiere puedes poner en comentarios el N de Orden</p>
                     <form method="POST" action="{{ route('transfer.proof', ['order' => $order->id]) }}" enctype="multipart/form-data">
                         @csrf
 

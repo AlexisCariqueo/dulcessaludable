@@ -59,6 +59,8 @@ class CheckoutController extends Controller
     
             // Aquí se borran los items del carrito
             CartItem::where('user_id', $user->id)->delete();
+
+            session()->put('cartCount', 0);
     
             $paymentMethod = $request->input('payment-method');
             Log::info('Payment method: '.$paymentMethod);
@@ -179,7 +181,7 @@ class CheckoutController extends Controller
         }
     
         if (!empty($errors)) {
-            // Pass the errors to the view
+            
             return view('frontend.checkout', compact('cartItems', 'total', 'direccion', 'errors'));
         }
     
@@ -191,15 +193,15 @@ class CheckoutController extends Controller
     
 
     public function processPayment(Request $request) {
-        // Get cart items from the session
+        
         $cartItems = $this->getCartItems();
     
-        // Calculate total price
+       
         $total = array_reduce($cartItems, function ($carry, $item) {
             return $carry + ($item['price'] * $item['quantity']);
         }, 0);
     
-        // Check stock availability
+       
         foreach ($cartItems as $cartItem) {
             $producto = Producto::find($cartItem['id']);
             if ($producto->stock < $cartItem['quantity']) {
@@ -207,12 +209,12 @@ class CheckoutController extends Controller
             }
         }
     
-        // Create a new Order
+       
         $order = new Order;
-        $order->users_id = auth()->id();  // Assuming the user is logged in
+        $order->users_id = auth()->id(); 
         $order->total = $total;
     
-        // ... Other order fields here ...
+        
     
         $order->save();
     
@@ -224,22 +226,24 @@ class CheckoutController extends Controller
                 'precio' => $cartItem['price'],
             ]);
             
-            // Update product stock
+           
             $producto = Producto::find($cartItem['id']);
             $producto->stock -= $cartItem['quantity'];
             $producto->save();
         }
     
-        // Delete cart items
+        
         CartItem::where('user_id', auth()->id())->delete();
+
+        session()->put('cartCount', 0);
     
-        // Depending on the payment method chosen by the user, redirect to the appropriate route
+       
         if ($request->get('payment-method') === 'transferencia') {
             return redirect()->route('frontend.checkout.transferencia', ['order' => $order->id]);
         } else if ($request->get('payment-method') === 'flow') {
-            // ... Redirect to the flow payment processing page ...
+           
         } else {
-            // ... Handle other payment methods ...
+            
         }
     }
     
