@@ -41,13 +41,13 @@
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="tortaEnteraFilter">
                             <label class="form-check-label" for="tortaEnteraFilter">
-                                Mostrar solo tortas enteras
+                                Mostrar solo Diabeticos
                             </label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="porcionTortaFilter">
                             <label class="form-check-label" for="porcionTortaFilter">
-                                Mostrar solo porciones de torta
+                                Mostrar solo Celiacos
                             </label>
                         </div>
                         <button class="btn btn-primary mt-4 custom-button" id="aplicarFiltro">Aplicar filtro</button>
