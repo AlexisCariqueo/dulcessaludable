@@ -21,14 +21,35 @@ class UserController extends Controller
         return view('tienda.index');
     }
     
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::all();
-        $users = User::with('role')->get();
-
-
-        return view('admin.users.index', compact('users'));
+        $query = User::query();
+    
+        if ($request->has('searchId') && trim($request->searchId) !== '') {
+            $query->where('id', $request->searchId);
+        }
+    
+        if ($request->has('searchName') && trim($request->searchName) !== '') {
+            $query->where('name', 'like', '%'.$request->searchName.'%');
+        }
+    
+        if ($request->has('searchEmail') && trim($request->searchEmail) !== '') {
+            $query->where('email', 'like', '%'.$request->searchEmail.'%');
+        }
+    
+        if ($request->has('searchRole') && trim($request->searchRole) !== '') {
+            $query->whereHas('role', function ($q) use ($request) {
+                $q->where('name', 'like', '%'.$request->searchRole.'%');
+            });
+        }
+    
+        $users = $query->paginate(10);
+    
+        return view('admin.users.index', ['users' => $users]);
     }
+    
+
+    
 
     public function create()
     {

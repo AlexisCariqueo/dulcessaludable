@@ -1,9 +1,9 @@
 <div class="container bg-custom">
     <div class="row">
         <div class="col-md-4">
-            <h5>Tienda de Pasteles</h5>
+            <h5>Olivias/Saludables</h5>
             <p>123 Calle de Pasteles<br>
-            Ciudad de Postres, CP 12345<br>
+            Ciudad de Postres, CP 1234<br>
             Teléfono: +1 (555) 123-4567</p>
         </div>
         <div class="col-md-4">

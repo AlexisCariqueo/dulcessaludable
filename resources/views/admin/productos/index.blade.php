@@ -12,16 +12,60 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Listado de Productos</h3>
-                    <a href="{{ route('admin.productos.create') }}" class="btn btn-success float-end">Crear Producto</a>
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <div>
+                        <h3 class="card-title">Listado de Productos</h3>
+                    </div>
+                    <div>
+                        <a href="{{ route('admin.productos.create') }}" class="btn btn-success">Crear Producto</a>
+                    </div>
                 </div>
+                <div class="card-header">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Filtros de búsqueda
+                        </button>
+                    </h2>
+                    <div class="accordion" id="filterAccordion">
+                        <div class="accordion-item">
+                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#filterAccordion">
+                                <div class="accordion-body">
+                                    <form action="{{ route('admin.productos.index') }}" method="GET">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <input type="text" name="searchName" class="form-control mb-2" placeholder="Buscar por nombre..." value="{{ request()->get('searchName') }}">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="text" name="searchPrice" class="form-control mb-2" placeholder="Buscar por precio..." value="{{ request()->get('searchPrice') }}">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <select name="searchStock" class="form-control mb-2">
+                                                    <option value="">Todos</option>
+                                                    <option value="con" {{ request()->get('searchStock') === 'con' ? 'selected' : '' }}>Con Stock</option>
+                                                    <option value="sin" {{ request()->get('searchStock') === 'sin' ? 'selected' : '' }}>Sin Stock</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <button class="btn btn-secondary" type="submit">Buscar</button>
+                                                <a href="{{ route('admin.productos.index') }}" class="btn btn-secondary">Limpiar</a>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>              
                 <div class="card-body">
                     <div class="table-responsive"> 
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th>#</th>
+                                    <th>ID</th>
                                     <th>Nombre</th>
                                     <th>Precio</th>
                                     <th>Stock</th>

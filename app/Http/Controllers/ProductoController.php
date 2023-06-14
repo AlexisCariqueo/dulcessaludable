@@ -10,11 +10,37 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductoController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $productos = Producto::paginate(10);
+        $searchName = $request->get('searchName');
+        $searchPrice = $request->get('searchPrice');
+        $searchStock = $request->get('searchStock');
+    
+        $productos = Producto::query();
+    
+        if($searchName != ''){
+            $productos = $productos->where('name', 'like', '%' . $searchName . '%');
+        }
+    
+        if($searchPrice != ''){
+            $productos = $productos->where('precio', $searchPrice);
+        }
+    
+        if($searchStock != ''){
+            if($searchStock == 'con'){
+                $productos = $productos->where('stock', '>', 0);
+            }
+            if($searchStock == 'sin'){
+                $productos = $productos->where('stock', 0);
+            }
+        }
+    
+        $productos = $productos->paginate(10);
+    
         return view('admin.productos.index', compact('productos'));
     }
+    
+
 
     public function create()
     {

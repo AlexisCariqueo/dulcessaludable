@@ -13,14 +13,45 @@ use App\Mail\OrderShipped;
 class OrderController extends Controller
 {
     
-    public function index()
+    public function index(Request $request)
     {
-        $orders = Order::paginate(10);
-
+        $query = Order::query();
+    
+        if ($request->has('searchId') && trim($request->searchId) !== '') {
+            $query->where('id', $request->searchId);
+        }
+    
+        if ($request->has('searchName') && trim($request->searchName) !== '') {
+            $query->whereHas('user', function ($q) use ($request) {
+                $q->where('name', 'like', '%'.$request->searchName.'%');
+            });
+        }
+    
+        if ($request->has('searchDate') && trim($request->searchDate) !== '') {
+            $parts = explode('-', $request->searchDate);
+            
+            if (count($parts) == 2) {
+                // Año y mes
+                $query->whereYear('created_at', $parts[1])->whereMonth('created_at', $parts[0]);
+            }
+        }
+    
+        if ($request->has('searchStatus') && trim($request->searchStatus) !== '') {
+            if ($request->searchStatus === 'null') {
+                $query->whereNull('estado');
+            } else {
+                $query->where('estado', $request->searchStatus);
+            }
+        }
+    
+        $orders = $query->paginate(10);
+    
         $orderStatuses = ['pendiente', 'pagado', 'enviando', 'entregado'];
-
+    
         return view('admin.ordenes.index', ['orders' => $orders, 'orderStatuses' => $orderStatuses]);
     }
+    
+    
 
     public function create()
     {

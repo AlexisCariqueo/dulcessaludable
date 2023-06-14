@@ -5,13 +5,13 @@
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="{{ asset('storage/tienda/logocarru.jpg') }}" class="d-block w-100" alt="...">
+                <img src="{{ asset('storage/storage/tienda/logocarru.jpg') }}" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img src="{{ asset('storage/tienda/carru2.jpg') }}" class="d-block w-100" alt="...">
+                <img src="{{ asset('storage/storage/tienda/carru2.jpg') }}" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img src="{{ asset('storage/tienda/carru3.jpg') }}" class="d-block w-100" alt="...">
+                <img src="{{ asset('storage/storage/tienda/carru3.jpg') }}" class="d-block w-100" alt="...">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
