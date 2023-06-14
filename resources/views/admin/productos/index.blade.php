@@ -40,13 +40,20 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-12">
+                                            <div class="col-md-6">
                                                 <select name="searchStock" class="form-control mb-2">
                                                     <option value="">Todos</option>
                                                     <option value="con" {{ request()->get('searchStock') === 'con' ? 'selected' : '' }}>Con Stock</option>
                                                     <option value="sin" {{ request()->get('searchStock') === 'sin' ? 'selected' : '' }}>Sin Stock</option>
                                                 </select>
                                             </div>
+                                            <div class="col-md-6">
+                                                <select name="searchCategory" class="form-control mb-2">
+                                                    <option value="">Todos</option>
+                                                    <option value="Diabeticos" {{ request()->get('searchCategory') === 'Diabeticos' ? 'selected' : '' }}>Diabeticos</option>
+                                                    <option value="Celiacos" {{ request()->get('searchCategory') === 'Celiacos' ? 'selected' : '' }}>Celiacos</option>
+                                                </select>
+                                            </div>                                            
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12">
@@ -69,7 +76,7 @@
                                     <th>Nombre</th>
                                     <th>Precio</th>
                                     <th>Stock</th>
-                                    <th>Descripción</th>
+                                    <th>Categoría</th>
                                     <th>Fecha de Creación</th>
                                     <th>Fecha de Actualización</th>
                                     <th>Acciones</th>
@@ -82,7 +89,7 @@
                                     <td>{{ $producto->name }}</td>
                                     <td>${{ $producto->precio }}</td>
                                     <td>{{ $producto->stock }}</td>
-                                    <td>{{ Str::limit($producto->descripcion, 20) }}</td>
+                                    <td>{{ $producto->categoria->nombre }}</td>
                                     <td>{{ $producto->created_at }}</td>
                                     <td>{{ $producto->updated_at }}</td>
                                     <td>

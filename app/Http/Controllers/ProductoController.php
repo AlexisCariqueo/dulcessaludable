@@ -15,6 +15,7 @@ class ProductoController extends Controller
         $searchName = $request->get('searchName');
         $searchPrice = $request->get('searchPrice');
         $searchStock = $request->get('searchStock');
+        $searchCategory = $request->get('searchCategory');
     
         $productos = Producto::query();
     
@@ -34,6 +35,13 @@ class ProductoController extends Controller
                 $productos = $productos->where('stock', 0);
             }
         }
+        
+        if($searchCategory != ''){
+            $productos = $productos->whereHas('categoria', function ($query) use ($searchCategory) {
+                $query->where('nombre', $searchCategory);
+            });
+        }
+        
     
         $productos = $productos->paginate(10);
     
