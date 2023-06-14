@@ -48,8 +48,8 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <button class="btn btn-secondary" type="submit">Buscar</button>
                                                 <a href="{{ route('admin.ordenes.index') }}" class="btn btn-secondary">Limpiar</a>
+                                                <button class="btn btn-secondary" type="submit">Buscar</button>
                                             </div>
                                         </div>
                                     </form>

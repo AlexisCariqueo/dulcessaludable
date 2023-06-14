@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Categorías del Blog</h3>
-                    <a href="{{ route('admin.categorias-blog.create') }}" class="btn btn-primary mb-3 float-end">Crear nueva categoría</a>
+                    <a href="{{ route('admin.categorias-blog.create') }}" class="btn btn-success mb-3 float-end">Crear nueva categoría</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -15,8 +15,8 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Nombre</th>
-                                    <th>Acciones</th>
+                                    <th>Nombre</th> 
+                                    <th class="d-flex justify-content-end">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>

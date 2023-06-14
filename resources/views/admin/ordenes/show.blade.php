@@ -62,7 +62,7 @@
                             </select>
                         </div>
                         <br>
-                        <button type="submit" class="btn btn-primary">Actualizar estado de la orden</button>
+                        <button type="submit" class="btn btn-success float-end">Actualizar estado de la orden</button>
                     </form>
                 </div>
             </div>

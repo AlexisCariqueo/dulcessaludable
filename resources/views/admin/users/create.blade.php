@@ -10,7 +10,14 @@
         <div class="row">
             <div class="col-md-8 offset-md-2">
                 <div class="card">
-                    <div class="card-header">{{ __('Create User') }}</div>
+                    <div class="card-header  d-flex justify-content-between align-items-center">
+                        <div>
+                            <h3 class="card-title"> Crear Usuario</h3>
+                        </div>
+                        <div>
+                            <a href="{{ route('admin.users.index') }}" class="btn btn-secondary float-end">Regresar</a>
+                        </div>
+                    </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('admin.users.store') }}">
                             @csrf
@@ -39,7 +46,7 @@
                                 </select>
                             </div>
                             <br>
-                            <button type="submit" class="btn btn-primary">Crear usuario</button>
+                            <button type="submit" class="btn btn-success float-end">Crear usuario</button>
                         </form>
                         
                     </div>

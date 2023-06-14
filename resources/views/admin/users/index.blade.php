@@ -10,9 +10,13 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Listado de Usuarios</h3>
-                    <a href="{{ route('admin.users.create') }}" class="btn btn-success float-end">Crear Usuario</a>
+                <div class="card-header  d-flex justify-content-between align-items-center">
+                    <div>
+                        <h3 class="card-title">Listado de Usuarios</h3>
+                    </div>
+                    <div>
+                        <a href="{{ route('admin.users.create') }}" class="btn btn-success float-end">Crear Usuario</a>
+                    </div>
                 </div>
                 <div class="card-header">
                     <h2 class="accordion-header" id="headingOne">
@@ -41,8 +45,8 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <button class="btn btn-secondary" type="submit">Buscar</button>
                                                 <a href="{{ route('admin.users.index') }}" class="btn btn-secondary">Limpiar</a>
+                                                <button class="btn btn-secondary" type="submit">Buscar</button>
                                             </div>
                                         </div>
                                     </form>
