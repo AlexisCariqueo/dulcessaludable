@@ -10,14 +10,34 @@ use Illuminate\Pagination\Paginator;
 
 class BlogController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::with('user')->paginate(10); 
-        return view('admin.blog.index', compact('posts'));
+        $query = Post::query();
+    
+        if ($request->has('searchId') && trim($request->searchId) !== '') {
+            $query->where('id', $request->searchId);
+        }
+    
+        if ($request->has('searchTitle') && trim($request->searchTitle) !== '') {
+            $query->where('title', 'like', '%' . $request->searchTitle . '%');
+        }
+    
+        if ($request->has('searchCategory') && trim($request->searchCategory) !== '') {
+            $query->whereHas('categoria', function ($q) use ($request) {
+                $q->where('nombre', 'like', '%' . $request->searchCategory . '%');
+            });
+        }
+    
+        if ($request->has('searchStatus') && trim($request->searchStatus) !== '') {
+            $query->where('status', $request->searchStatus);
+        }
+    
+        $posts = $query->paginate(10);
+    
+        return view('admin.blog.index', ['posts' => $posts]);
     }
     
     
-
     public function create()
     {
         $categorias = CategoriaBlog::all();
