@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Mail\OrderCompleted;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
 use App\Mail\OrderShipped;
 
 
@@ -150,9 +151,15 @@ class OrderController extends Controller
     
     public function storeTransferProof(Request $request, Order $order)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'proof' => 'required|file|mimes:jpg,png,pdf|max:2048',
+        ], [
+            'proof.max' => 'El archivo es demasiado grande. No puede ser mayor a 2MB.'
         ]);
+    
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
     
         if ($request->hasFile('proof')) {
             $fileName = 'order_'.$order->id.'_proof.'.$request->file('proof')->getClientOriginalExtension();
@@ -177,6 +184,7 @@ class OrderController extends Controller
         // Redirige a la vista de confirmación.
         return redirect()->route('confirmation.view');
     }
+    
     
     
     

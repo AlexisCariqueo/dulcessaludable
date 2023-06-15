@@ -54,21 +54,30 @@
                     <h3>Comprobante de Pago</h3>
                 </div>
                 <div class="card-body">
+                    <!-- Show error messages -->
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    <!-- end error messages -->
+                    
                     <p>*Debes Subir el comprobante de pago de su transferencia, el que se genera al finalizar el pago</p>
                     <p>*Recuerda que debe aparecer el valor, el correo de la empresa y si quiere puedes poner en comentarios el N de Orden</p>
                     <form method="POST" action="{{ route('transfer.proof', ['order' => $order->id]) }}" enctype="multipart/form-data">
                         @csrf
-
                         <input type="hidden" name="order_id" value="{{ $order->id }}">
-
                         <div class="form-group">
                             <label for="proof">Subir prueba de transferencia:</label>
                             <input type="file" id="proof" name="proof" required>
                         </div>
-
                         <button type="submit" class="btn btn-finalizar-compra">Finalizar compra</button>
                     </form>
-                </div>
+                </div>                
             </div>
         </div>
     </div>
@@ -99,3 +108,4 @@
     }
 </style>
 @endsection
+

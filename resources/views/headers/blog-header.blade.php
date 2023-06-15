@@ -25,6 +25,7 @@
         background-color: #ef7c63;
         color: #ffffff;
     }
+
   </style>
 
   <div id="intro" class="p-5 text-center"> 
@@ -33,8 +34,6 @@
       <a class="btn btn-personalizado m-2" href="{{ route('blog.recetas') }}">Ultima Receta</a>
       <a class="btn btn-personalizado m-2" href="{{ route('blog.noticias') }}">Revisa nuestras ultimas noticias</a>
   </div>
-</header>
-
 
     <!-- Barra de navegación -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
@@ -42,10 +41,11 @@
         <a class="navbar-brand" target="_blank" href="#">
           <img src="" height="16" alt="" loading="lazy" style="margin-top: -3px;" />
         </a>
-        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01"
-          aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
-          <i class="fas fa-bars"></i>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarExample01"
+        aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
         </button>
+
         <!-- ... -->
           <div class="collapse navbar-collapse" id="navbarExample01">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
