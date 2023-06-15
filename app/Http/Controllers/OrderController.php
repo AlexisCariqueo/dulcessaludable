@@ -152,7 +152,7 @@ class OrderController extends Controller
     public function storeTransferProof(Request $request, Order $order)
     {
         $validator = Validator::make($request->all(), [
-            'proof' => 'required|file|mimes:jpg,png,pdf|max:2048',
+            'proof' => 'required|file|mimes:jpg,png,pdf|max:6144',
         ], [
             'proof.max' => 'El archivo es demasiado grande. No puede ser mayor a 2MB.'
         ]);
