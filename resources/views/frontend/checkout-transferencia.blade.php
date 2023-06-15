@@ -67,6 +67,7 @@
                     <!-- end error messages -->
                     
                     <p>*Debes Subir el comprobante de pago de su transferencia, el que se genera al finalizar el pago</p>
+                    <p>*Archivos aceptados:jpg,png,pdf con peso maximo de:2mb</p>
                     <p>*Recuerda que debe aparecer el valor, el correo de la empresa y si quiere puedes poner en comentarios el N de Orden</p>
                     <form method="POST" action="{{ route('transfer.proof', ['order' => $order->id]) }}" enctype="multipart/form-data">
                         @csrf
