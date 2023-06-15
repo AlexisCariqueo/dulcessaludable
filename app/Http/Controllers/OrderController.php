@@ -154,7 +154,7 @@ class OrderController extends Controller
         $validator = Validator::make($request->all(), [
             'proof' => 'required|file|mimes:jpg,png,pdf|max:6144',
         ], [
-            'proof.max' => 'El archivo es demasiado grande. No puede ser mayor a 2MB.'
+            'proof.max' => 'El archivo es demasiado grande. No puede ser mayor a 6MB.'
         ]);
     
         if ($validator->fails()) {
