@@ -7,7 +7,7 @@
     <div class="card-header">
         <div class="d-flex justify-content-between align-items-center">
             <h3 class="card-title">{{ $user->name }}</h3>
-            <a href="{{ route('admin.users.index') }}" class="btn btn-primary">Volver</a>
+            <a href="{{ route('admin.users.index') }}" class="btn btn-secondary float-end">Volver</a>
         </div>
     </div>
     <div class="card-body">
@@ -30,6 +30,24 @@
                     </tbody>
                 </table>
             </div>
+            <div class="col-md-6">
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <th>ID:</th>
+                            <td>{{ $user->id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Correo electrónico:</th>
+                            <td>{{ $user->created_at }}</td>
+                        </tr>
+                        <tr>
+                            <th>Rol:</th>
+                            <td>{{ $user->updated_at }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
@@ -45,15 +63,15 @@
                     <tbody>
                         <tr>
                             <th>Calle:</th>
-                            <td>{{ $user->direccion->calle }}</td>
+                            <td>{{ $user->direccion ? $user->direccion->calle : 'No definida' }}</td>
                         </tr>
                         <tr>
                             <th>Comuna:</th>
-                            <td>{{ $user->direccion->comuna }}</td>
+                            <td>{{ $user->direccion ? $user->direccion->comuna : 'No definida' }}</td>
                         </tr>
                         <tr>
                             <th>Ciudad:</th>
-                            <td>{{ $user->direccion->ciudad }}</td>
+                            <td>Santiago</td>
                         </tr>
                     </tbody>
                 </table>
@@ -63,11 +81,11 @@
                     <tbody>
                         <tr>
                             <th>Código Postal:</th>
-                            <td>{{ $user->direccion->codigo_postal }}</td>
+                            <td>{{ $user->direccion ? $user->direccion->codigo_postal : 'No definida' }}</td>
                         </tr>
                         <tr>
                             <th>Número:</th>
-                            <td>{{ $user->direccion->numero }}</td>
+                            <td>{{ $user->direccion ? $user->direccion->numero : 'No definida' }}</td>
                         </tr>
                     </tbody>
                 </table>
