@@ -14,7 +14,6 @@
                         <a href="{{ route('admin.productos.index') }}" class="btn btn-secondary float-end">Regresar</a>
                     </div>
                 </div>
-
                 <div class="card-body">
                     @if ($errors->any())
                     <div class="alert alert-danger">

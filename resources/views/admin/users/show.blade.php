@@ -38,11 +38,11 @@
                             <td>{{ $user->id }}</td>
                         </tr>
                         <tr>
-                            <th>Correo electrónico:</th>
+                            <th>Fecha de creación de cuenta:</th>
                             <td>{{ $user->created_at }}</td>
                         </tr>
                         <tr>
-                            <th>Rol:</th>
+                            <th>Fecha de la ultima Actualización:</th>
                             <td>{{ $user->updated_at }}</td>
                         </tr>
                     </tbody>

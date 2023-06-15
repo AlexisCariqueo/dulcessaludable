@@ -16,7 +16,7 @@
                 </div>
                 <div class="card-header">
                     <h2 class="accordion-header" id="headingOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                             Filtros de búsqueda
                         </button>
                     </h2>
@@ -48,8 +48,8 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <a href="{{ route('admin.ordenes.index') }}" class="btn btn-secondary">Limpiar</a>
-                                                <button class="btn btn-secondary" type="submit">Buscar</button>
+                                                <button class="btn btn-secondary float-end" type="submit">Buscar</button>
+                                                <a href="{{ route('admin.ordenes.index') }}" class="btn btn-secondary float-end me-2">Limpiar</a>
                                             </div>
                                         </div>
                                     </form>

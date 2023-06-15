@@ -11,6 +11,7 @@
                         <h3 class="card-title">ID: {{ $producto->id }} Vista del Producto en la tienda</h3>
                     </div>
                     <div>
+                        <a href="{{ route('admin.productos.edit', $producto->id) }}" class="btn btn-warning me-2">Editar</a>
                         <a href="{{ route('admin.productos.index') }}" class="btn btn-secondary float-end">Regresar</a>
                     </div>
                 </div>

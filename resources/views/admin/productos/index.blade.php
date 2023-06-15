@@ -22,7 +22,7 @@
                 </div>
                 <div class="card-header">
                     <h2 class="accordion-header" id="headingOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                             Filtros de búsqueda
                         </button>
                     </h2>
@@ -57,8 +57,8 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <a href="{{ route('admin.productos.index') }}" class="btn btn-secondary">Limpiar</a>
-                                                <button class="btn btn-secondary" type="submit">Buscar</button>
+                                                <button class="btn btn-success float-end" type="submit">Buscar</button>
+                                                <a href="{{ route('admin.productos.index') }}" class="btn btn-secondary float-end me-2">Limpiar</a>
                                             </div>
                                         </div>
                                     </form>
@@ -93,8 +93,8 @@
                                     <td>{{ $producto->created_at }}</td>
                                     <td>{{ $producto->updated_at }}</td>
                                     <td>
-                                        <a href="{{ route('admin.productos.show', $producto->id) }}" class="btn btn-sm btn-success">Ver</a>
-                                        <a href="{{ route('admin.productos.edit', $producto->id) }}" class="btn btn-sm btn-primary">Editar</a>
+                                        <a href="{{ route('admin.productos.show', $producto->id) }}" class="btn btn-sm btn-primary">Ver</a>
+                                        <a href="{{ route('admin.productos.edit', $producto->id) }}" class="btn btn-sm btn-warning">Editar</a>
                                         <form action="{{ route('admin.productos.destroy', $producto->id) }}" method="POST" style="display: inline;">
                                             @csrf
                                             @method('DELETE')
