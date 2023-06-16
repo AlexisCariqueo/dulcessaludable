@@ -68,7 +68,7 @@
                       </li>
                   @endif
                   @else               
-                  <li class="nav-item ms-auto">
+                  <li class="nav-item">
                       <a class="nav-link" href="{{ route('login') }}">Login</a>
                   </li>
               @endauth

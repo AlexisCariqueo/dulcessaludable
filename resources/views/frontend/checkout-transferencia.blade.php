@@ -54,7 +54,6 @@
                     <h3>Comprobante de Pago</h3>
                 </div>
                 <div class="card-body">
-                    <!-- Show error messages -->
                     @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>
@@ -63,9 +62,7 @@
                                 @endforeach
                             </ul>
                         </div>
-                    @endif
-                    <!-- end error messages -->
-                    
+                    @endif                    
                     <p>*Debes Subir el comprobante de pago de su transferencia, el que se genera al finalizar el pago</p>
                     <p>*Archivos aceptados:jpg,png,pdf con peso maximo de:2mb</p>
                     <p>*Recuerda que debe aparecer el valor, el correo de la empresa y si quiere puedes poner en comentarios el N de Orden</p>
