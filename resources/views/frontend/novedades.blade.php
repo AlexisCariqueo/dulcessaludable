@@ -9,9 +9,8 @@
             <div class="card mb-4" style="background-image: url('{{ Storage::url($post->featured_image) }}'); background-size: cover; background-position: center;">
                 <div class="card-body" style="background-color: rgba(255, 255, 255, 0.5);">
                     <h2 class="card-title">{{ $post->title }}</h2>
-                    <p class="card-text">{!! Str::limit($post->excerpt, 70) !!}</p>
-                    <a href="{{ route('blog.show', $post->slug) }}" class="btn" style="background-color:  #f18770; color: #yourcolor;">Leer más &rarr;</a>
-
+                    <p class="card-text">{!! Str::limit(strip_tags($post->excerpt), 70) !!}</p>
+                    <a href="{{ route('blog.show', $post->slug) }}" class="btn" style="background-color:  #f18770; color: #ffffff;">Leer más &rarr;</a>
                 </div>
                 <div class="card-footer text-muted">
                     Publicado el {{ $post->created_at->format('d/m/Y') }} por {{ $post->user->name }}   
@@ -35,7 +34,6 @@
                             </li>
                         @endforeach
                     </ul>
-                    
                 </div>
             </div>
         </div>
@@ -45,11 +43,10 @@
 <style>
     .pagination .page-link {
         color: rgb(0, 0, 0);
-        border: none; /* Agrega esta línea */
+        border: none; 
     }
 
     .pagination .page-item.active .page-link {
         background-color: #b36b50;
-        border: none; /* Agrega esta línea */
-    }
+        border: none; 
 </style>

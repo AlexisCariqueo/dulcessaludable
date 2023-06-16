@@ -74,10 +74,17 @@
               @endauth
             </ul>
             <form class="d-flex" action="{{ route('blog.search') }}" method="GET">
-              <input class="form-control me-2" type="search" placeholder="Buscar post" aria-label="Buscar" name="query">
-              <button class="btn btn-outline-success" type="submit">Buscar</button>
-            </form> 
+              <input class="form-control me-2" type="search" placeholder="Buscar Post" aria-label="Buscar" name="query">
+              <button class="btn custom-search-btn" type="submit">Buscar</button>
+          </form>         
           </div>
       </div>
     </nav>
 </header>
+
+<style>
+  .custom-search-btn {
+      background-color: #fc6745; 
+      color: #ffffff; 
+  }
+</style>

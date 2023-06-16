@@ -46,7 +46,7 @@ class CartController extends Controller
     public function addToCart(Request $request)
     {
         $productId = $request->input('productos_id');
-        $quantity = $request->input('cantidad'); // obtén la cantidad del formulario
+        $quantity = $request->input('cantidad'); 
         $product = Producto::find($productId);
     
         if (!$product) {

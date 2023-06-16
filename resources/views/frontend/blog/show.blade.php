@@ -9,7 +9,6 @@
                     <article>
                         <header class="mb-4">
                             <h1 class="fw-bolder mb-1">{{ $post->title }}</h1>
-
                             <div class="text-muted fst-italic mb-2">
                                 Posted on
                                 @if($post->created_at)
@@ -19,24 +18,18 @@
                                 @endif
                                 by {{ $post->user ? $post->user->name : 'Unknown' }}
                             </div>
-
                             @if($post->categoria)
                                 <a class="badge bg-secondary text-decoration-none link-light" href="#!">{{ $post->categoria->nombre }}</a>
                             @else
                                 <span class="badge bg-secondary">Sin categoría</span>
                             @endif
                         </header>
-
-                        <!-- Excerpt -->
                         <div class="mb-4">
                             {!! $post->excerpt !!}
                         </div>
-
                         <section class="mb-5">
                             {!! $post->content !!}
                         </section>
-
-                        <!-- Featured Image -->
                         <figure class="mb-4">
                             <img class="img-fluid rounded" src="{{ Storage::url($post->featured_image) }}" alt="{{ $post->title }}" />
                         </figure>                            
@@ -44,8 +37,11 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4 ">
+        <div class="col-md-4">
             <div class="card my-4">
+                <a href="{{ route('tienda.index') }}">
+                    <img class="card-img-top" src="{{ asset('storage/storage/blog/irtienda.jpg') }}" alt="Imagen de la tienda">
+                </a>                               
                 <h5 class="card-header">Posts más vistos</h5>
                 <div class="card-body">
                     <ul class="list-unstyled mb-0">
