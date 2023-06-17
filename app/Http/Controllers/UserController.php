@@ -62,12 +62,12 @@ class UserController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|email|unique:users|max:255',
-            'password' => 'required',
+            'password' => ['required', 'min:8', 'confirmed', 'regex:/[a-z]/', 'regex:/[A-Z]/', 'regex:/[0-9]/'],
             'role_id' => 'required|exists:roles,id'
         ]);
-
+    
         $user = User::create($validatedData);
-
+    
         return redirect()->route('admin.users.index')->with('success', 'El usuario se creó correctamente.');
     }
 
@@ -92,15 +92,17 @@ class UserController extends Controller
                 Rule::unique('users')->ignore($user),
                 'max:255',
             ],
-            
+            'password' => ['nullable', 'min:8', 'confirmed', 'regex:/[a-z]/', 'regex:/[A-Z]/', 'regex:/[0-9]/'],
             'role_id' => 'required|exists:roles,id'
         ]);
-
+    
+        if(!$request->filled('password')) {
+            unset($validatedData['password']);
+        }
+    
         $user->update($validatedData);
-
-        
+    
         return redirect()->route('admin.users.index')->with('success', 'El usuario se actualizó correctamente.');
-
     }
 
     public function destroy(User $user)
@@ -201,7 +203,6 @@ class UserController extends Controller
     
         // Verificar si la contraseña actual es correcta
         if (!Hash::check($request->current_password, $user->password)) {
-            Log::info('La contraseña actual no es correcta');
             return back()->withErrors(['current_password' => 'La contraseña actual no es correcta']);
         }
     
@@ -215,17 +216,15 @@ class UserController extends Controller
     
         // Check if new password matches the stored hashed password
         if (Hash::check($request->new_password, $user->password)) {
-            Log::info('La nueva contraseña coincide con la contraseña almacenada');
+            Auth::logout();
+            return redirect()->route('login')->with('success', 'Contraseña actualizada con éxito, por favor inicia sesión nuevamente');
         } else {
-            Log::info('La nueva contraseña no coincide con la contraseña almacenada');
+            return back()->withErrors(['new_password' => 'Ocurrió un error al actualizar la contraseña. Por favor, intenta de nuevo.']);
         }
-        
-        Auth::logout();
-    
-        Log::info('Contraseña actualizada con éxito');
-    
-        return redirect()->route('login')->with('success', 'Contraseña actualizada con éxito, por favor inicia sesión nuevamente');
     }
+    
+
+    
     
     
     

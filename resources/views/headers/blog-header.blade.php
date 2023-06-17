@@ -84,7 +84,7 @@
 
 <style>
   .custom-search-btn {
-      background-color: #fc6745; 
+      background-color: #77c5d8; 
       color: #ffffff; 
   }
 </style>

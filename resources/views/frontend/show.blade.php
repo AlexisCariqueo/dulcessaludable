@@ -2,6 +2,16 @@
 
 @section('content')
     <div class="container mt-5">
+        @if(session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -11,7 +21,7 @@
                                 <div class="carousel-inner">
                                     @foreach($imagenes as $key => $imagen)
                                         <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                                            <img src="{{ Storage::url($imagen->ruta_imagen) }}" class="d-block w-100" alt="{{ $producto->name }}">
+                                            <img src="{{ Storage::url($imagen->ruta_imagen) }}" class="card-img-top" alt="{{ $producto->name }}" style="height: 500px; width: auto; object-fit: cover;">
                                         </div>
                                     @endforeach
                                 </div>

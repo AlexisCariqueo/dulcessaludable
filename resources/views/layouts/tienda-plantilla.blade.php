@@ -96,6 +96,19 @@
                 border-color: #d86850;
             }
 
+            .card-img-top {
+                height: 200px;
+                width: auto;
+                object-fit: cover;
+            }
+
+            @media screen and (max-width: 768px) {
+                .card-img-top {
+                    height: auto;
+                    width: 100%;
+                }
+            }
+
         </style>
 
     </head>

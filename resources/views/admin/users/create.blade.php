@@ -19,31 +19,61 @@
                         </div>
                     </div>
                     <div class="card-body">
+                        <!-- Mostrando mensajes de éxito -->
+                        @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+
                         <form method="POST" action="{{ route('admin.users.store') }}">
                             @csrf
                             <div class="form-group">
                                 <label for="name">Nombre:</label>
-                                <input type="text" name="name" id="name" class="form-control">
+                                <input type="text" name="name" id="name" value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror">
+                                @error('name')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="email">Correo electrónico:</label>
-                                <input type="email" name="email" id="email" class="form-control">
+                                <input type="email" name="email" id="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror">
+                                @error('email')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="password">Contraseña:</label>
-                                <input type="password" name="password" id="password" class="form-control">
+                                <small id="passwordHelp" class="form-text text-muted">
+                                  La contraseña debe tener al menos 8 caracteres, al menos una letra minúscula, una mayúscula y un número.
+                                </small>
+                                <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror">
+                                @error('password')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                             <div class="form-group">
-                                <label for="password" class="form-label">Repetir Contraseña:</label>
-                                <input type="password" name="password_confirmation" class="form-control" id="exampleInputPassword1">
-                              </div>
+                                <label for="password_confirmation" class="form-label">Repetir Contraseña:</label>
+                                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control">
+                            </div>
                             <div class="form-group">
                                 <label for="role_id">Rol:</label>
-                                <select name="role_id" id="role_id" class="form-control">
+                                <select name="role_id" id="role_id" class="form-control @error('role_id') is-invalid @enderror">
                                     @foreach ($roles as $role)
                                         <option value="{{ $role->id }}">{{ $role->name }}</option>
                                     @endforeach
                                 </select>
+                                @error('role_id')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                             <br>
                             <button type="submit" class="btn btn-success float-end">Crear usuario</button>
@@ -55,4 +85,3 @@
         </div>
     </div>
 @endsection
-

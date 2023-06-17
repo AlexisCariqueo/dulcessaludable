@@ -54,7 +54,7 @@
                                     @foreach($producto->imagenes as $index => $imagen)
                                         <div class="carousel-item @if($index == 0) active @endif">
                                             <a href="{{ route('productos.show', $producto->id) }}">
-                                                <img src="{{ Storage::url($imagen->ruta_imagen) }}" class="card-img-top" alt="{{ $producto->name }}">
+                                                <img src="{{ Storage::url($imagen->ruta_imagen) }}" class="card-img-top" alt="{{ $producto->name }}" style="height: 200px; width: auto; object-fit: cover;">
                                             </a>
                                         </div>
                                     @endforeach
@@ -84,7 +84,9 @@
                                     <input type="number" class="form-control" id="cantidad" name="cantidad" min="1" max="{{ $producto->stock }}" value="1">
                                 </div>
                                 <input type="hidden" name="productos_id" value="{{ $producto->id }}">
-                                <button type="submit" class="btn btn-primary boton-personalizado">Agregar al carrito</button>
+                                <button type="submit" class="btn btn-primary boton-personalizado" {{ $producto->stock <= 0 ? 'disabled' : '' }}>
+                                    {{ $producto->stock <= 0 ? 'Producto sin stock' : 'Agregar al carrito' }}
+                                </button>                                
                             </form>
                         </div>
                     </div>
@@ -133,6 +135,27 @@
             background-color: #b36b50;
             border: none; /* Agrega esta línea */
         }
+
+   
+        
+        .card-img-top {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        @media screen and (max-width: 768px) {
+            .card-img-top {
+                width: 100%;
+                min-height: 400px; // Set a minimum height here
+                object-fit: scale-down;
+            }
+        }
+      
+
+  
+
+            
     </style>
     
     <script>

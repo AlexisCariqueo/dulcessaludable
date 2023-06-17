@@ -81,7 +81,7 @@ class BlogController extends Controller
         $post->user_id = auth()->id();
         $post->save();
 
-        return redirect()->route('admin.dashboard')->with('success', 'Entrada de blog creada con éxito.');
+        return redirect()->route('admin.blog.index')->with('success', 'Entrada de blog creada con éxito.');
 
     }
 

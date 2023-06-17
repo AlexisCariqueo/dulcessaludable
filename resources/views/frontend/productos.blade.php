@@ -23,8 +23,30 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
+    @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
+    @endif
+
+    @if (auth()->check() && auth()->user()->orders()->whereNull('estado')->exists())
+        <div class="alert alert-warning alert-dismissible fade show" role="alert" id="order-pending-message">
+            Tienes una orden pendiente de pago. Por favor, realiza el pago en <a href="{{ route('profile') }}">Mis Órdenes</a>.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
 
     <div class="container mt-5">
+        @if(session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
         <div class="row">
             <div class="col-md-3">
                 <div class="card">
@@ -69,9 +91,8 @@
                                         <div class="carousel-inner">
                                             @foreach($producto->imagenes as $index => $imagen)
                                                 <div class="carousel-item @if($index == 0) active @endif">
-                                                    <!-- Añade un hipervínculo a la imagen -->
                                                     <a href="{{ route('productos.show', $producto->id) }}">
-                                                        <img src="{{ Storage::url($imagen->ruta_imagen) }}" class="card-img-top" alt="{{ $producto->name }}">
+                                                        <img src="{{ Storage::url($imagen->ruta_imagen) }}" class="card-img-top" alt="{{ $producto->name }}" style="height: 200px; width: auto; object-fit: cover;">
                                                     </a>
                                                 </div>
                                             @endforeach
@@ -103,7 +124,9 @@
                                             <input type="number" class="form-control" id="cantidad" name="cantidad" min="1" max="{{ $producto->stock }}" value="1">
                                         </div>
                                         <input type="hidden" name="productos_id" value="{{ $producto->id }}">
-                                        <button type="submit" class="btn btn-primary boton-personalizado">Agregar al carrito</button>
+                                        <button type="submit" class="btn btn-primary boton-personalizado" {{ $producto->stock <= 0 ? 'disabled' : '' }}>
+                                            {{ $producto->stock <= 0 ? 'Producto sin stock' : 'Agregar al carrito' }}
+                                        </button>                                        
                                     </form>
                                     <input type="hidden" class="stock" value="{{ $producto->stock }}">
                                     <input type="hidden" class="tipo-producto" value="{{ $producto->categorias_id }}">
@@ -150,6 +173,19 @@
         .pagination .page-item.active .page-link {
             background-color: #b36b50;
             border: none; /* Agrega esta línea */
+        }
+        .card-img-top {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        @media screen and (max-width: 768px) {
+            .card-img-top {
+                width: 100%;
+                min-height: 400px; // Set a minimum height here
+                object-fit: scale-down;
+            }
         }
 
     </style>

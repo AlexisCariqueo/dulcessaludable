@@ -2,31 +2,34 @@
 
 @section('content')
         <div class="container">
-@if(!empty($unpaidMessage))
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        {{ $unpaidMessage }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-@endif
+    @if(!empty($unpaidMessage))
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{ $unpaidMessage }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
 
-@if(!empty($shippingMessage))
-    <div class="alert alert-info alert-dismissible fade show" role="alert">
-        {{ $shippingMessage }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-@endif
+    @if(!empty($shippingMessage))
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+            {{ $shippingMessage }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
 
-@if(!empty($incompleteMessage))
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        {{ $incompleteMessage }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-@endif
+    @if(!empty($incompleteMessage))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ $incompleteMessage }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
 
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mt-4">
         <div class="col-md-8">
-
-           
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
             <div class="card mb-4">
                 <div class="card-header">Datos Personales</div>
 
@@ -40,7 +43,7 @@
                 </div>
             </div>
 
-<!-- Dirección -->
+
 <div class="card mb-4">
     <div class="card-header">Dirección</div>
 

@@ -45,8 +45,15 @@ class CartController extends Controller
 
     public function addToCart(Request $request)
     {
-        $productId = $request->input('productos_id');
-        $quantity = $request->input('cantidad'); 
+        // Validar datos
+        $validatedData = $request->validate([
+            'productos_id' => 'required|exists:productos,id',
+            'cantidad' => 'required|numeric|min:1',
+        ]);
+    
+        $productId = $validatedData['productos_id'];
+        $quantity = $validatedData['cantidad'];
+    
         $product = Producto::find($productId);
     
         if (!$product) {
@@ -86,6 +93,7 @@ class CartController extends Controller
     
         return redirect()->back()->with('success', 'Producto agregado al carrito.');
     }
+    
     
     
 
