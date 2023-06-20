@@ -54,7 +54,7 @@
                                     @foreach($producto->imagenes as $index => $imagen)
                                         <div class="carousel-item @if($index == 0) active @endif">
                                             <a href="{{ route('productos.show', $producto->id) }}">
-                                                <img src="{{ Storage::url($imagen->ruta_imagen) }}" class="card-img-top" alt="{{ $producto->name }}" style="height: 200px; width: auto; object-fit: cover;">
+                                                <img src="{{ Storage::url($imagen->ruta_imagen) }}" class="card-img-top" alt="{{ $producto->name }}" style="height: 180px; width: auto; object-fit: cover;">
                                             </a>
                                         </div>
                                     @endforeach

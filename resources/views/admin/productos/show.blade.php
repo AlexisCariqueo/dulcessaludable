@@ -23,7 +23,7 @@
                                 <div class="carousel-inner">
                                     @foreach($imagenes as $key => $imagen)
                                         <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                                            <img src="{{ Storage::url($imagen->ruta_imagen) }}" class="card-img-top" alt="{{ $producto->name }}" style="height: 500px; width: auto; object-fit: cover;">
+                                            <img src="{{ Storage::url($imagen->ruta_imagen) }}" class="card-img-top" alt="{{ $producto->name }}" style="height: 400px; width: 600px; object-fit: cover;">
                                         </div>
                                     @endforeach
                                 </div>
