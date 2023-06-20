@@ -19,11 +19,11 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <div id="carouselExampleControls" class="carousel slide shadow rounded" data-bs-ride="carousel" style="max-width: 400px;">
+                            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                                 <div class="carousel-inner">
                                     @foreach($imagenes as $key => $imagen)
                                         <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                                            <img src="{{ Storage::url($imagen->ruta_imagen) }}" class="d-block w-100 rounded" alt="{{ $producto->name }}">
+                                            <img src="{{ Storage::url($imagen->ruta_imagen) }}" class="card-img-top" alt="{{ $producto->name }}" style="height: 500px; width: auto; object-fit: cover;">
                                         </div>
                                     @endforeach
                                 </div>
