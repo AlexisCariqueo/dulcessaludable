@@ -81,7 +81,10 @@ class BlogController extends Controller
         $post->user_id = auth()->id();
         $post->save();
 
-        return redirect()->route('admin.blog.index')->with('success', 'Entrada de blog creada con éxito.');
+        return redirect()->route('admin.blog.index')->with([
+            'message' => 'Entrada de blog creada con éxito.',
+            'message_type' => 'success',
+        ]);
 
     }
 
@@ -131,7 +134,10 @@ class BlogController extends Controller
     
         $post->save();
     
-        return redirect()->route('admin.blog.index')->with('success', 'Entrada de blog actualizada con éxito.');
+        return redirect()->route('admin.blog.index')->with([
+            'message' => 'Entrada de blog actualizada con éxito.',
+            'message_type' => 'warning',
+        ]);
     }
     
     
@@ -141,7 +147,11 @@ class BlogController extends Controller
     $post = Post::findOrFail($id);
     $post->delete();
 
-    return redirect()->route('admin.blog.index')->with('success', 'Entrada de blog eliminada con éxito.');
+        return redirect()->route('admin.blog.index')->with([
+            'message' => 'Entrada de blog eliminada con éxito.',
+            'message_type' => 'danger',
+        ]);
+        
     }
 
 

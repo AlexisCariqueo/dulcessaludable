@@ -12,6 +12,11 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
+                @if (session('message'))
+                    <div class="alert alert-{{ session('alert-type') }}">
+                        {{ session('message') }}
+                    </div>
+                @endif
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <div>
                         <h3 class="card-title">Listado de Productos</h3>

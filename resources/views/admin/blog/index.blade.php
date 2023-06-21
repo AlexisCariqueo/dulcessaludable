@@ -5,9 +5,9 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    @if (session('success'))
-                        <div class="alert alert-success">
-                            {{ session('success') }}
+                    @if (session('message'))
+                        <div class="alert alert-{{ session('message_type') }}">
+                            {{ session('message') }}
                         </div>
                     @endif
                     <div class="card-header d-flex justify-content-between align-items-center">

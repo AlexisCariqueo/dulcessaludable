@@ -73,7 +73,7 @@ class ProductoController extends Controller
     
         $this->storeProductImages($request, $producto);
     
-        return redirect()->route('admin.productos.index')->with('success', 'Producto creado exitosamente');
+        return redirect()->route('admin.productos.index')->with(['message' => 'Producto creado exitosamente', 'alert-type' => 'success']);
     }
         
 
@@ -108,7 +108,7 @@ class ProductoController extends Controller
         $this->updateProductImages($request, $producto);
         $producto->update($request->all());
     
-        return redirect()->route('admin.productos.index')->with('success', 'Producto actualizado exitosamente');
+        return redirect()->route('admin.productos.index')->with(['message' => 'Producto actualizado exitosamente', 'alert-type' => 'warning']);
     }
 
     public function destroy($id)
@@ -116,7 +116,7 @@ class ProductoController extends Controller
         $producto = Producto::findOrFail($id);
         $producto->delete();
 
-        return redirect()->route('admin.productos.index')->with('success', 'Producto eliminado exitosamente');
+        return redirect()->route('admin.productos.index')->with(['message' => 'Producto eliminado exitosamente', 'alert-type' => 'danger']);
     }
 
     private function storeProductImages(Request $request, Producto $producto)

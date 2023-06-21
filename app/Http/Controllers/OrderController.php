@@ -204,24 +204,31 @@ class OrderController extends Controller
 
     public function changeStatus(Order $order, Request $request)
     {
+        $oldStatus = $order->estado;
         $order->update([
             'estado' => $request->estado,
         ]);
+        $newStatus = $request->estado;
     
-        if ($request->estado == 'enviando') { // Cambiado a 'enviando'
+        if ($newStatus == 'enviando') { // Cambiado a 'enviando'
             Mail::to($order->user->email)->send(new OrderShipped($order));
             Mail::to('panaderiaypasteleria.olivias@gmail.com')->send(new OrderShipped($order));
     
-            Log::info('Se ha enviado un correo electrónico al cliente y a la dirección de copia.');
+            Log::info('Se ha enviado un correo al cliente.');
     
+            // Crear el mensaje de la sesión
+            $message = 'La orden ' . $order->id . ' fue actualizada de ' . $oldStatus . ' a ' . $newStatus;
             return redirect()->route('admin.ordenes.index', $order)->with([
-                'status' => 'Estado de la orden actualizado con éxito.',
-                'email_status' => 'Se ha enviado un correo electrónico al cliente y a la dirección de copia.',
+                'status' => $message,
+                'email_status' => 'Se ha enviado un correo al cliente.',
             ]);
         }
     
-        return redirect()->route('admin.ordenes.index', $order)->with('status', 'Estado de la orden actualizado con éxito.');
+        // Crear el mensaje de la sesión
+        $message = 'La orden ' . $order->id . ' fue actualizada de ' . $oldStatus . ' a ' . $newStatus;
+        return redirect()->route('admin.ordenes.index', $order)->with('status', $message);
     }
+    
     
     
     

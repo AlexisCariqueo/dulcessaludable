@@ -18,11 +18,11 @@
                         <a href="{{ route('admin.users.create') }}" class="btn btn-success float-end">Crear Usuario</a>
                     </div>
                 </div>
-                @if (session('success'))
-                    <div class="alert alert-success">
-                        {{ session('success') }}
-                    </div>
-                @endif
+                @if (session('message'))
+                <div class="alert alert-{{ session('alert-type') }}">
+                    {{ session('message') }}
+                </div>
+                @endif            
                 <div class="card-header">
                     <h2 class="accordion-header" id="headingOne">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">

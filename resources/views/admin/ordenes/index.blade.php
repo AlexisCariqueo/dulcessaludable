@@ -11,6 +11,11 @@
                         {{ session('email_status') }}
                     </div>
                 @endif
+                @if (session('status'))
+                    <div class="alert alert-success"> 
+                        {{ session('status') }}
+                    </div> 
+                @endif
                 <div class="card-header">
                     <h3 class="card-title">Listado de Órdenes</h3>
                 </div>

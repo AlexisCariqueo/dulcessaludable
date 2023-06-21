@@ -9,6 +9,11 @@
                     <h3 class="card-title">Categorías del Blog</h3>
                     <a href="{{ route('admin.categorias-blog.create') }}" class="btn btn-success mb-3 float-end">Crear nueva categoría</a>
                 </div>
+                @if (session('message'))
+                    <div class="alert alert-{{ session('message_type') }}">
+                        {{ session('message') }}
+                    </div>
+                @endif      
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-striped">

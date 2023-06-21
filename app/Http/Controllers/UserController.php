@@ -68,7 +68,7 @@ class UserController extends Controller
     
         $user = User::create($validatedData);
     
-        return redirect()->route('admin.users.index')->with('success', 'El usuario se creó correctamente.');
+        return redirect()->route('admin.users.index')->with(['message' => 'El usuario se creó correctamente.', 'alert-type' => 'success']);
     }
 
     public function show(User $user)
@@ -102,13 +102,13 @@ class UserController extends Controller
     
         $user->update($validatedData);
     
-        return redirect()->route('admin.users.index')->with('success', 'El usuario se actualizó correctamente.');
+        return redirect()->route('admin.users.index')->with(['message' => 'El usuario se actualizó correctamente.', 'alert-type' => 'warning']);
     }
 
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('admin.users.index')->with('success', 'Usuario eliminado exitosamente');
+        return redirect()->route('admin.users.index')->with(['message' => 'Usuario eliminado exitosamente', 'alert-type' => 'danger']);
     }
 
     public function profile()
