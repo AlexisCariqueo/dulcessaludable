@@ -77,7 +77,7 @@
                                             <td>{{ $post->status }}</td>
                                             <td>{{ $post->created_at }}</td>
                                             <td>
-                                                <a href="{{ route('admin.blog.show', $post->id) }}" class="btn btn-sm btn-success">Ver</a>
+                                                <a href="{{ route('admin.blog.show', $post->id) }}" class="btn btn-sm btn-primary">Ver</a>
                                                 <a href="{{ route('admin.blog.edit', $post->id) }}" class="btn btn-sm btn-warning">Editar</a>
                                                 <form action="{{ route('admin.blog.destroy', $post->id) }}" method="POST" class="d-inline">
                                                     @csrf

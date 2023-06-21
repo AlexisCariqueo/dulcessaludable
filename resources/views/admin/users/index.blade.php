@@ -69,6 +69,8 @@
                                     <th>Nombre</th>
                                     <th>Email</th>
                                     <th>Rol</th>
+                                    <th>Fecha de Creación</th>
+                                    <th>Fecha de Actualización</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
@@ -79,8 +81,10 @@
                                     <td>{{ $user->name ?? '' }}</td>
                                     <td>{{ $user->email ?? '' }}</td>
                                     <td>{{ $user->role->name ?? '' }}</td>
+                                    <td>{{ $user->created_at }}</td>
+                                    <td>{{ $user->updated_at }}</td>
                                     <td>
-                                        <a href="{{ route('admin.users.show', $user->id) }}" class="btn btn-sm btn-success">Ver</a>
+                                        <a href="{{ route('admin.users.show', $user->id) }}" class="btn btn-sm btn-primary">Ver</a>
                                         <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-sm btn-warning">Editar</a>
                                         <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" style="display: inline;">
                                             @csrf
