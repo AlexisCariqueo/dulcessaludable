@@ -11,14 +11,16 @@
                     <h2 class="card-title">{{ $post->title }}</h2>
                     <p class="card-text">{!! Str::limit(strip_tags($post->excerpt), 70) !!}</p>
                     <a href="{{ route('blog.show', $post->slug) }}" class="btn" style="background-color:  #f18770; color: #ffffff;">Leer más &rarr;</a>
-
+                    <a href="https://twitter.com/share?url={{ urlencode(route('blog.show', $post->slug)) }}&text={{ urlencode($post->title) }}" target="_blank">
+                        <img src="/ruta/a/tu/imagen/de/twitter.png" alt="Twitter">
+                    </a>
                 </div>
                 <div class="card-footer text-muted">
                     Publicado el {{ $post->created_at->format('d/m/Y') }} por {{ $post->user->name }}
                 </div>                    
             </div>
-        @endforeach
-        {{ $posts->links('pagination::bootstrap-5') }}
+            @endforeach
+            {{ $posts->links('pagination::bootstrap-5') }}
         </div>
         <div class="col-md-4">
             <div class="card my-4">
@@ -42,7 +44,7 @@
 </div>
 @endsection
 <style>
-        .black-text {
+    .black-text {
         color: black;
     }
     .pagination .page-link {
