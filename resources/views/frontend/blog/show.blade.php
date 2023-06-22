@@ -20,13 +20,13 @@
                                     por {{ $post->user ? $post->user->name : 'Unknown' }}
                                 </div>
                                 @if($post->categoria)
-                                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">{{ $post->categoria->nombre }}</a>
+                                    <a class="badge text-decoration-none link-light" style="background-color:  #11a104; color: #ffffff;" href="#!">{{ $post->categoria->nombre }}</a>
                                 @else
                                     <span class="badge bg-secondary">Sin categoría</span>
                                 @endif
                                 @if($post->tags)
                                     @foreach(json_decode($post->tags) as $tag)
-                                        <span class="badge bg-primary">{{ $tag }}</span>
+                                        <span class="badge" style="background-color:  #f18770; color: #ffffff;" >{{ $tag }}</span>
                                     @endforeach
                                 @endif
                             </div>
