@@ -10,8 +10,18 @@
                 <div class="card-body" style="background-color: rgba(255, 255, 255, 0.5);">
                     <h2 class="card-title">{{ $post->title }}</h2>
                     <p class="card-text">{!! Str::limit(strip_tags($post->excerpt), 70) !!}</p>
-                    <a href="{{ route('blog.show', $post->slug) }}" class="btn" style="background-color:  #f18770; color: #ffffff;">Leer más &rarr;</a>
-                </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <a href="{{ route('blog.show', $post->slug) }}" class="btn" style="background-color:  #f18770; color: #ffffff;">Leer más &rarr;</a>
+                        <div>
+                            <a href="https://twitter.com/share?url={{ urlencode(route('blog.show', $post->slug)) }}&text={{ urlencode($post->title) }}" target="_blank" style="color: #1DA1F2; margin-right: 10px;">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(route('blog.show', $post->slug)) }}" target="_blank" style="color: #3b5998;">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>   
                 <div class="card-footer text-muted">
                     Publicado el {{ $post->created_at->format('d/m/Y') }} por {{ $post->user->name }}   
                 </div>                    
