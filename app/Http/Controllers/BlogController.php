@@ -167,7 +167,7 @@ class BlogController extends Controller
     {
         $post->increment('views');
         $categorias = CategoriaBlog::all();
-        $mostViewedPosts = Post::orderBy('views', 'desc')->take(5)->get();
+        $mostViewedPosts = Post::where('status', 'publicado')->orderBy('views', 'desc')->take(5)->get();
         return view('frontend.blog.show', compact('post', 'categorias', 'mostViewedPosts'));
     }
     
@@ -260,7 +260,7 @@ class BlogController extends Controller
        
         $posts = Post::where('title', 'LIKE', "%{$query}%")->get();
         
-        $mostViewedPosts = Post::orderBy('views', 'desc')->take(5)->get();
+        $mostViewedPosts = Post::where('status', 'publicado')->orderBy('views', 'desc')->take(5)->get();
 
        
         return view('frontend.search-results', ['posts' => $posts, 'mostViewedPosts' => $mostViewedPosts]);

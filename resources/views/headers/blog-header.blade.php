@@ -74,7 +74,7 @@
               @endauth
             </ul>
             <form class="d-flex" action="{{ route('blog.search') }}" method="GET">
-              <input class="form-control me-2" type="search" placeholder="Buscar Post" aria-label="Buscar" name="query">
+              <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar" name="query">
               <button class="btn custom-search-btn" type="submit">Buscar</button>
           </form>         
           </div>
