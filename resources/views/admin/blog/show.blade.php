@@ -26,19 +26,29 @@
                                         <div class="card mb-4" style="background-image: url('{{ Storage::url($post->featured_image) }}'); background-size: cover; background-position: center;">
                                             <div class="card-body" style="background-color: rgba(255, 255, 255, 0.5);">
                                                 <h2 class="card-title">{{ $post->title }}</h2>
+                                                @if($post->categoria)
+                                                    <a class="badge text-decoration-none link-light" style="background-color:  #11a104; color: #ffffff;" href="#!">{{ $post->categoria->nombre }}</a>
+                                                @else
+                                                    <span class="badge bg-secondary">Sin categoría</span>
+                                                @endif
+                                                @if($post->tags)
+                                                    @foreach(json_decode($post->tags) as $tag)
+                                                        <span class="badge" style="background-color:  #f18770; color: #ffffff;" >{{ $tag }}</span>
+                                                    @endforeach
+                                                @endif
                                                 <p class="card-text">{!! Str::limit(strip_tags($post->excerpt), 70) !!}</p>
                                                 <div style="display: flex; justify-content: space-between;">
                                                     <a href="{{ route('blog.show', $post->slug) }}" class="btn" style="background-color:  #f18770; color: #ffffff;">Leer más &rarr;</a>
                                                     <div>
-                                                        <a href="#" style="color: #1DA1F2; margin-right: 10px;">
+                                                        <a href="https://twitter.com/share?url={{ urlencode(route('blog.show', $post->slug)) }}&text={{ urlencode($post->title) }}" target="_blank" style="color: #1DA1F2; margin-right: 10px;">
                                                             <i class="fab fa-twitter"></i>
                                                         </a>
-                                                        <a href="#" style="color: #3b5998;">
+                                                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(route('blog.show', $post->slug)) }}" target="_blank" style="color: #3b5998;">
                                                             <i class="fab fa-facebook"></i>
                                                         </a>
                                                     </div>
                                                 </div>
-                                            </div>  
+                                            </div>                                              
                                             <div class="card-footer text-muted">
                                                 Publicado el {{ $post->created_at->format('d/m/Y') }} por {{ $post->user->name }}
                                             </div>
@@ -64,9 +74,14 @@
                                         </div>
     
                                         @if($post->categoria)
-                                            <a class="badge bg-secondary text-decoration-none link-light" href="#!">{{ $post->categoria->nombre }}</a>
+                                            <a class="badge text-decoration-none link-light" style="background-color:  #11a104; color: #ffffff;" href="#!">{{ $post->categoria->nombre }}</a>
                                         @else
                                             <span class="badge bg-secondary">Sin categoría</span>
+                                        @endif
+                                        @if($post->tags)
+                                        @foreach(json_decode($post->tags) as $tag)
+                                            <span class="badge" style="background-color:  #f18770; color: #ffffff;" >{{ $tag }}</span>
+                                        @endforeach
                                         @endif
                                     </header>
     

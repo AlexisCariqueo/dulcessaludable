@@ -11,18 +11,23 @@
                             <div>
                                 <h1 class="fw-bolder mb-1">{{ $post->title }}</h1>
                                 <div class="text-muted fst-italic mb-2">
-                                    Posted on
+                                    Publicado el
                                     @if($post->created_at)
                                         {{ $post->created_at->format('d/m/Y') }}
                                     @else
                                         Unknown date
                                     @endif
-                                    by {{ $post->user ? $post->user->name : 'Unknown' }}
+                                    por {{ $post->user ? $post->user->name : 'Unknown' }}
                                 </div>
                                 @if($post->categoria)
                                     <a class="badge bg-secondary text-decoration-none link-light" href="#!">{{ $post->categoria->nombre }}</a>
                                 @else
                                     <span class="badge bg-secondary">Sin categoría</span>
+                                @endif
+                                @if($post->tags)
+                                    @foreach(json_decode($post->tags) as $tag)
+                                        <span class="badge bg-primary">{{ $tag }}</span>
+                                    @endforeach
                                 @endif
                             </div>
                             <div>
