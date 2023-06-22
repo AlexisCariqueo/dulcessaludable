@@ -14,13 +14,12 @@
 
 @section('scripts')
 <script>
-    // El número es el tiempo en milisegundos (1000 ms = 1 segundo)
     let counter = 5;
     const countdown = setInterval(() => {
         counter--;
         document.getElementById('counter').innerText = counter;
         if (counter === 0) {
-            // Redirecciona a la página principal después de 5 segundos
+            
             window.location.href = "{{ url('/') }}";
             clearInterval(countdown);
         }

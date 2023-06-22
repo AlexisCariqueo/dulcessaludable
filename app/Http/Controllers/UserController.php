@@ -117,15 +117,12 @@ class UserController extends Controller
         $order = $user->orders()->paginate(5);
         $direccion = $user->direccion;  // Obtiene la dirección del usuario
         
-        // Verifica si hay una orden no pagada
         $unpaidOrder = $user->orders()->whereNull('estado')->first();
         $unpaidMessage = $unpaidOrder ? 'Tienes una orden pendiente de pago. Por favor, finaliza la compra para completarla.' : '';
         
-        // Verifica si hay una orden en proceso de envío
         $shippingOrder = $user->orders()->where('estado', 'enviando')->first();
         $shippingMessage = $shippingOrder ? 'Tu orden está en proceso de envío. Pronto la recibirás.' : '';
     
-        // Verifica si hay una orden sin completar
         $incompleteOrder = $user->orders()->whereNull('estado')->first();
         $incompleteMessage = $incompleteOrder ? 'Tienes una orden incompleta. Si no la completas, será eliminada.' : '';
     
@@ -147,14 +144,11 @@ class UserController extends Controller
             'numero' => ['required', 'string', 'max:255']
         ]);
     
-        // Actualizar campos de usuario
         $user->name = $request->name;
         $user->email = $request->email;
         $user->save();
     
-        // Comprueba si la direccion existe
         if($user->direccion) {
-            // Actualizar campos de direccion
             $user->direccion->calle = $request->calle;
             $user->direccion->comuna = $request->comuna;
             $user->direccion->piso = $request->piso;
@@ -162,7 +156,6 @@ class UserController extends Controller
             $user->direccion->numero = $request->numero;
             $user->direccion->save();
         } else {
-            // Si no existe, crea una nueva direccion
             $direccion = new Direccion([
                 'calle' => $request->calle,
                 'comuna' => $request->comuna,
@@ -201,20 +194,16 @@ class UserController extends Controller
             'new_password' => ['required', 'min:8', 'confirmed', 'regex:/[a-z]/', 'regex:/[A-Z]/', 'regex:/[0-9]/'],
         ]);
     
-        // Verificar si la contraseña actual es correcta
         if (!Hash::check($request->current_password, $user->password)) {
             return back()->withErrors(['current_password' => 'La contraseña actual no es correcta']);
         }
     
-        // Actualizar contraseña
         $user->update([
             'password' => $request->new_password,
         ]);
         
-        // Refrescar modelo de usuario para obtener los últimos cambios de la base de datos
         $user = $user->refresh();
     
-        // Check if new password matches the stored hashed password
         if (Hash::check($request->new_password, $user->password)) {
             Auth::logout();
             return redirect()->route('login')->with('success', 'Contraseña actualizada con éxito, por favor inicia sesión nuevamente');

@@ -80,7 +80,6 @@
         </div>
     </div>
 
-    <!-- Botones de Acción -->
     <div class="row mt-3">
         <div class="col-md-6">
             <a href="{{ route('frontend.direccion') }}" class="btn btn-secondary">Volver</a>

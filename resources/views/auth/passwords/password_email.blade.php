@@ -25,8 +25,8 @@
 </div>
 <style>
     .mi-boton-personalizado {
-        background-color: #ff6666; /* Cambia este color a tu gusto */
-        border-color: #ff6666; /* Cambia este color a tu gusto */
+        background-color: #ff6666; 
+        border-color: #ff6666; 
     }
 
 </style>

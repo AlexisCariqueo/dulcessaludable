@@ -7,22 +7,32 @@
             <div class="card mt-4">
                 <div class="card-body">
                     <article>
-                        <header class="mb-4">
-                            <h1 class="fw-bolder mb-1">{{ $post->title }}</h1>
-                            <div class="text-muted fst-italic mb-2">
-                                Posted on
-                                @if($post->created_at)
-                                    {{ $post->created_at->format('d/m/Y') }}
+                        <header class="mb-4 d-flex justify-content-between align-items-center">
+                            <div>
+                                <h1 class="fw-bolder mb-1">{{ $post->title }}</h1>
+                                <div class="text-muted fst-italic mb-2">
+                                    Posted on
+                                    @if($post->created_at)
+                                        {{ $post->created_at->format('d/m/Y') }}
+                                    @else
+                                        Unknown date
+                                    @endif
+                                    by {{ $post->user ? $post->user->name : 'Unknown' }}
+                                </div>
+                                @if($post->categoria)
+                                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">{{ $post->categoria->nombre }}</a>
                                 @else
-                                    Unknown date
+                                    <span class="badge bg-secondary">Sin categoría</span>
                                 @endif
-                                by {{ $post->user ? $post->user->name : 'Unknown' }}
                             </div>
-                            @if($post->categoria)
-                                <a class="badge bg-secondary text-decoration-none link-light" href="#!">{{ $post->categoria->nombre }}</a>
-                            @else
-                                <span class="badge bg-secondary">Sin categoría</span>
-                            @endif
+                            <div>
+                                <a href="https://twitter.com/share?url={{ urlencode(route('blog.show', $post->slug)) }}&text={{ urlencode($post->title) }}" target="_blank" style="color: #1DA1F2; margin-right: 20px; font-size: 2rem;">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(route('blog.show', $post->slug)) }}" target="_blank" style="color: #3b5998; font-size: 2rem;">
+                                    <i class="fab fa-facebook"></i>
+                                </a>
+                            </div>
                         </header>
                         <div class="mb-4">
                             {!! $post->excerpt !!}

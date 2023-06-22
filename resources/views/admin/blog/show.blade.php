@@ -27,8 +27,18 @@
                                             <div class="card-body" style="background-color: rgba(255, 255, 255, 0.5);">
                                                 <h2 class="card-title">{{ $post->title }}</h2>
                                                 <p class="card-text">{!! Str::limit(strip_tags($post->excerpt), 70) !!}</p>
-                                                <a href="#" class="btn" style="background-color:  #f18770; color: #ffffff;">Leer más &rarr;</a>
-                                            </div>
+                                                <div style="display: flex; justify-content: space-between;">
+                                                    <a href="{{ route('blog.show', $post->slug) }}" class="btn" style="background-color:  #f18770; color: #ffffff;">Leer más &rarr;</a>
+                                                    <div>
+                                                        <a href="#" style="color: #1DA1F2; margin-right: 10px;">
+                                                            <i class="fab fa-twitter"></i>
+                                                        </a>
+                                                        <a href="#" style="color: #3b5998;">
+                                                            <i class="fab fa-facebook"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>  
                                             <div class="card-footer text-muted">
                                                 Publicado el {{ $post->created_at->format('d/m/Y') }} por {{ $post->user->name }}
                                             </div>
@@ -60,19 +70,16 @@
                                         @endif
                                     </header>
     
-                                    <!-- Excerpt -->
                                     <div class="mb-4">
                                         
                                         {!! $post->excerpt !!}
                                     </div>
     
-                                    <!-- Content -->
                                     <section class="mb-5">
                                         
                                         {!! $post->content !!}
                                     </section>
     
-                                    <!-- Featured Image -->
                                     <figure class="mb-4">
                                         @if($post->featured_image)
                                             <img class="img-fluid rounded" src="{{ Storage::url($post->featured_image) }}" alt="{{ $post->title }}" />

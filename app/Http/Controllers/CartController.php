@@ -187,17 +187,15 @@ class CartController extends Controller
     public function getCartTotal() {
         $user = Auth::user();
     
-        // Recuperar la orden pendiente del usuario
         $order = Order::where('user_id', $user->id)
                       ->where('estado', 'pendiente')
                       ->first();
     
-        // Si no hay una orden pendiente, devolver un error
+
         if (!$order) {
             return response()->json(['error' => 'No hay un pedido pendiente'], 400);
         }
     
-        // Devolver el total de la orden
         return response()->json(['total' => $order->total]);
     }
     
@@ -215,13 +213,12 @@ class CartController extends Controller
         $order->estado = 'pendiente';
         $order->save();
     
-        // Asociar los productos con la orden
         foreach ($cartItems as $item) {
             $order->products()->attach($item->producto_id, [
                 'cantidad' => $item->quantity,
                 'precio' => $item->producto->precio,
             ]);
-            // Eliminar el producto del carrito
+
             $item->delete();
         }
     

@@ -28,7 +28,6 @@ class Order extends Model
     }
     
 
-    // Comentario: En el caso de que tu aplicación utilice una tabla 'payments' para guardar pagos.
     public function payment()
     {
         return $this->hasOne(Payment::class);

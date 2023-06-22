@@ -49,7 +49,7 @@ class ImageProductController extends Controller
     {
         $request->validate([
             'producto_id' => 'required|exists:productos,id',
-            'ruta_imagen' => 'image', // removed 'required' rule
+            'ruta_imagen' => 'image', 
         ]);
 
         $imagenProducto = ImagenProducto::findOrFail($id);

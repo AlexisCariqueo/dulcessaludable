@@ -57,7 +57,6 @@ class CheckoutController extends Controller
 
             $this->createOrderItems($cartItems, $order);
     
-            // Aquí se borran los items del carrito
             CartItem::where('user_id', $user->id)->delete();
 
             session()->put('cartCount', 0);
@@ -134,8 +133,6 @@ class CheckoutController extends Controller
     private function initiatePayment(Request $request, Order $order)
     {
         try {
-            // La lógica para iniciar el pago va aquí
-            // ...
 
             return redirect()->route('frontend.checkout-confirmacion', ['order' => $order->id]);
         } catch (\Exception $e) {
@@ -147,8 +144,6 @@ class CheckoutController extends Controller
     public function initiateTransferencia(Request $request, Order $order)
     {
         try {
-            // La lógica para iniciar la transferencia va aquí
-            // ...
 
             return redirect()->route('frontend.checkout-transferencia-confirmacion', ['order' => $order->id]);
         } catch (\Exception $e) {
@@ -159,19 +154,15 @@ class CheckoutController extends Controller
 
     public function checkout()
     {
-        // Obtener los artículos del carrito de la base de datos
         $user = auth()->user();
         $cartItems = $user->cartItems()->with('producto')->get();
     
-        // Calcular el precio total
         $total = $cartItems->sum(function ($item) {
             return $item->quantity * $item->producto->precio;
         });
     
-        // Obtener la dirección del usuario
         $direccion = $user->direccion;
     
-        // Check stock availability
         $errors = [];
         foreach ($cartItems as $cartItem) {
             $producto = $cartItem->producto;

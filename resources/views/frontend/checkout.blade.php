@@ -11,7 +11,6 @@
     </div>
 @endif
 
-    <!-- Carrito de Compras -->
     <div class="card mt-3">
         <div class="card-header">
             <h3>Carrito</h3>
@@ -90,7 +89,6 @@
         </div>
     </div>
     <div class="col-md-6">
-        <!-- Método de Pago -->
         <div class="card">
             <div class="card-header">
                 <h3>Método de Pago</h3>
@@ -108,7 +106,6 @@
                     </div>
                 </form> --}}
 
-                <!-- Formulario para el método de pago "transferencia" -->
                 <form method="POST" action="{{ route('frontend.checkout.processPayment') }}">
                     @csrf
                     <div class="button-container">
@@ -122,8 +119,6 @@
     </div>
 </div>
 
-
-    <!-- Botones de Acción -->
     <div class="row mt-3">
         <div class="col-md-6">
             <a href="{{ route('frontend.direccion') }}" class="btn btn-secondary">Volver</a>

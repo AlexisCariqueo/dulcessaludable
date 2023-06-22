@@ -80,24 +80,23 @@ class PaymentController extends Controller
 
         Log::info('Order found', ['order' => $order]);
         
-        // Validar que el request contiene un orderID
+        
         $request->validate([
         'orderID' => 'required'
         ]);
 
-        // Buscar la orden en la base de datos utilizando el orderID
+        
         $order = Order::find($request->orderID);
 
-        // Si no se encuentra la orden, retornar una respuesta con un error
+        
         if (!$order) {
         return response()->json(['message' => 'Order not found'], 404);
         }
 
-        // Actualizar el estado de la orden a 'pagado'
         $order->estado = 'pagado';
         $order->save();
 
-        // Registrar el pago en la base de datos
+       
         Payment::create([
         'user_id' => $order->users_id,
         'order_id' => $order->id,
@@ -106,7 +105,6 @@ class PaymentController extends Controller
         'paid_at' => now(),
         ]);
 
-        // Retornar una respuesta con un código de estado 200 (OK)
         return response()->json(['message' => 'Payment processed successfully']);
     }
 

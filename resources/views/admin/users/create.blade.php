@@ -19,7 +19,6 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <!-- Mostrando mensajes de éxito -->
                         @if (session('success'))
                             <div class="alert alert-success">
                                 {{ session('success') }}

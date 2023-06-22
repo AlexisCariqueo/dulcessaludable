@@ -95,12 +95,12 @@
 
 <style>
     .mi-boton-personalizado {
-        background-color: #f54242; /* Aquí pones el color de fondo que quieras */
-        color: white; /* Aquí pones el color de texto que quieras */
+        background-color: #f54242; 
+        color: white; 
     }
     
     .mi-boton-personalizado:hover {
-        background-color: #ff6666; /* Aquí pones el color de fondo que quieras cuando el mouse esté sobre el botón */
+        background-color: #ff6666; 
     }
     </style>
 @endsection

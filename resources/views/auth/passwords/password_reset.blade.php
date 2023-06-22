@@ -44,14 +44,14 @@
 
     <style>
         .mi-boton-personalizado {
-            background-color: #f54b4b; /* Cambia este color a tu gusto */
-            border-color: #f55353; /* Cambia este color a tu gusto */
-            color: #ffffff; /* Color del texto */
+            background-color: #f54b4b; 
+            border-color: #f55353; 
+            color: #ffffff; 
         }
     
         .mi-boton-personalizado:hover {
-            background-color: #ff3333; /* Cambia este color a tu gusto */
-            border-color: #ff3333; /* Cambia este color a tu gusto */
+            background-color: #ff3333; 
+            border-color: #ff3333; 
         }
     </style>
     

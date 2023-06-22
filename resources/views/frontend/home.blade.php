@@ -128,12 +128,12 @@
         }
         .pagination .page-link {
             color: rgb(0, 0, 0);
-            border: none; /* Agrega esta línea */
+            border: none; 
         }
 
         .pagination .page-item.active .page-link {
             background-color: #b36b50;
-            border: none; /* Agrega esta línea */
+            border: none;
         }
 
    

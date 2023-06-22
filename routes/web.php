@@ -57,13 +57,10 @@ Route::get('/checkout-transferencia/{order}', [CheckoutController::class, 'viewT
 Route::post('/checkout/process-payment', [CheckoutController::class, 'processPayment'])->name('frontend.checkout.processPayment');
 Route::get('/checkout-transferencia/{order}', [CheckoutController::class, 'showTransferencia'])->name('frontend.checkout.transferencia');
 
-//esto manda a lavista para cambiar la password
 Route::get('password/reset', [LoginController::class, 'showLinkRequestForm'])->name('password.request');
 
-//esto manda un a la funcion que genera un token temporar a un correo
 Route::post('password/email', [LoginController::class, 'sendResetLinkEmail'])->name('password.email');
 
-//a esto te lleva el limk del correo
 Route::get('password/reset/{token}', [LoginController::class, 'showResetForm'])->name('password.reset');
 
 

@@ -27,7 +27,7 @@
 
 <style>
     .bg-custom {
-        background-color: #f18770; /* Cambia el color de fondo del contenedor */
+        background-color: #f18770;
     }
 
     .button-group {
@@ -38,7 +38,7 @@
     .custom-link {
         display: block;
         margin-bottom: 10px;
-        color:  #565353; /* Cambia el color del enlace */
+        color:  #565353; 
         text-decoration: none;
         background-color: transparent;
         padding: 0;

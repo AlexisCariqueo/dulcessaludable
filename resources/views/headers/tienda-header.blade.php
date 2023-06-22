@@ -61,20 +61,20 @@
 
 <style>
     .bg-custom {
-        background-color: #f8cd9d; /* Cambia el color de fondo del menú */
+        background-color: #f8cd9d; 
     }
 
     .bi-cart-fill {
-        color: #ef4f4f; /* Cambia el color del ícono del carrito */
+        color: #ef4f4f; 
     }
 
     .btn-personalizado {
-        background-color: #ef4f4f; /* Aquí pones el color de fondo que quieras */
-        color: #010101; /* Aquí pones el color de texto que quieras */
+        background-color: #ef4f4f; 
+        color: #010101; 
     }
 
     .btn-personalizado:hover {
-        background-color: #ff6666; /* Aquí pones el color de fondo que quieras cuando el mouse esté sobre el botón */
-        color: #ffffff; /* Aquí pones el color de texto que quieras cuando el mouse esté sobre el botón */
+        background-color: #ff6666; 
+        color: #ffffff; 
     }
 </style>

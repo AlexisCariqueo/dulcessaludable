@@ -97,7 +97,6 @@
                                                 </div>
                                             @endforeach
                                         </div>
-                                        <!-- Controles del carrusel (sin hipervínculos) -->
                                         <button class="carousel-control-prev" type="button" data-bs-target="#productoCarousel{{$producto->id}}" data-bs-slide="prev">
                                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                             <span class="visually-hidden">Anterior</span>
@@ -108,7 +107,6 @@
                                         </button>
                                     </div>
                                 @else
-                                    <!-- Añade un hipervínculo a la imagen de relleno -->
                                     <a href="{{ route('productos.show', $producto->id) }}">
                                         <img src="https://via.placeholder.com/150" class="card-img-top" alt="{{ $producto->name }}">
                                     </a>
@@ -147,32 +145,30 @@
         .boton-personalizado {
             background-color: #f18770;
             color: white;
-            border: 2px solid #f18770;  /* Define el grosor y color del borde aquí */
-            border-radius: 5px;  /* Define el radio del borde (esquinas redondeadas) aquí */
+            border: 2px solid #f18770;  
+            border-radius: 5px; 
         }
 
         .boton-personalizado:hover {
             background-color: #b36b50;
             color: white;
-            border-color: #b36b50;  /* Cambia el color del borde en hover */
+            border-color: #b36b50;  
         }
 
         .custom-button {
-            /* Agrega aquí tus estilos personalizados */
             background-color: #f18770;
             color: #fff;
             border: none;
-        /* Otros estilos personalizados que desees aplicar */
         }
 
         .pagination .page-link {
             color: rgb(0, 0, 0);
-            border: none; /* Agrega esta línea */
+            border: none; /
         }
 
         .pagination .page-item.active .page-link {
             background-color: #b36b50;
-            border: none; /* Agrega esta línea */
+            border: none; 
         }
         .card-img-top {
             height: 200px;

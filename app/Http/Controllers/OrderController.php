@@ -32,7 +32,6 @@ class OrderController extends Controller
             $parts = explode('-', $request->searchDate);
             
             if (count($parts) == 2) {
-                // Año y mes
                 $query->whereYear('created_at', $parts[1])->whereMonth('created_at', $parts[0]);
             }
         }
@@ -65,7 +64,7 @@ class OrderController extends Controller
             'user_id' => 'required',
             'total' => 'required',
             'estado' => 'required',
-            'paypal_order_id' => 'required', // Asegúrate de que estás recibiendo este dato
+            'paypal_order_id' => 'required', 
         ]);
     
         $order = Order::create($validatedData);
@@ -134,15 +133,13 @@ class OrderController extends Controller
     
         $order = Order::findOrFail($orderId);
     
-        // Registra el estado original y el nuevo estado
         Log::info('Estado original: ' . $order->estado);
         Log::info('Nuevo estado: ' . $validated['estado']);
     
         $order->estado = $validated['estado'];
         $order->save();
     
-        // Verifica si el estado se actualizó correctamente
-        $order = Order::findOrFail($orderId);  // Recupera la orden desde la base de datos otra vez
+        $order = Order::findOrFail($orderId); 
         Log::info('Estado después de guardar: ' . $order->estado);
     
         return response()->json(['success' => 'El estado de la orden se actualizó con éxito.']);
@@ -176,12 +173,10 @@ class OrderController extends Controller
     
             $orderItems = $order->orderItems;
     
-            // Envía el correo de orden completada.
             Mail::to($order->user->email)->send(new OrderCompleted($order, $order->user, $orderItems));
             Mail::to('panaderiaypasteleria.olivias@gmail.com')->send(new OrderCompleted($order, $order->user, $orderItems));
         }
     
-        // Redirige a la vista de confirmación.
         return redirect()->route('confirmation.view');
     }
     
@@ -210,13 +205,12 @@ class OrderController extends Controller
         ]);
         $newStatus = $request->estado;
     
-        if ($newStatus == 'enviando') { // Cambiado a 'enviando'
+        if ($newStatus == 'enviando') { 
             Mail::to($order->user->email)->send(new OrderShipped($order));
             Mail::to('panaderiaypasteleria.olivias@gmail.com')->send(new OrderShipped($order));
     
             Log::info('Se ha enviado un correo al cliente.');
     
-            // Crear el mensaje de la sesión
             $message = 'La orden ' . $order->id . ' fue actualizada de ' . $oldStatus . ' a ' . $newStatus;
             return redirect()->route('admin.ordenes.index', $order)->with([
                 'status' => $message,
@@ -224,7 +218,6 @@ class OrderController extends Controller
             ]);
         }
     
-        // Crear el mensaje de la sesión
         $message = 'La orden ' . $order->id . ' fue actualizada de ' . $oldStatus . ' a ' . $newStatus;
         return redirect()->route('admin.ordenes.index', $order)->with('status', $message);
     }

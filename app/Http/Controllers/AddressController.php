@@ -65,7 +65,6 @@ class AddressController extends Controller
             ]);
         }
     
-        // Redirigimos al usuario a la página de pago
         return redirect()->route('checkout.index');
     }
     

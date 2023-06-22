@@ -85,7 +85,6 @@ use Illuminate\Support\Facades\Log;
 
 
 
-        //reset contraseña con correo
 
     public function showLinkRequestForm()
     {

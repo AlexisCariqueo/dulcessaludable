@@ -36,10 +36,9 @@ class RegisterController extends Controller
             'password.regex' => 'La contraseña debe contener al menos una letra minúscula, una mayúscula y un número.',
         ]);
 
-        // Consigue el ID del rol "comprador"
+
         $role = Role::where('name', 'comprador')->first();
     
-        // Crea un nuevo usuario con el rol asignado
         $user = User::create(array_merge(
             $request->only('name', 'email'),
             [
@@ -47,11 +46,9 @@ class RegisterController extends Controller
                 'role_id' => $role->id,
             ]
         ));
-    
-        // Autenticar al usuario
+        
         Auth::login($user);
     
-        // Migrar el carrito de la sesión a la base de datos
         $cartItems = session()->get('cart', []);
         foreach ($cartItems as $item) {
             $cartItem = CartItem::firstOrCreate(
@@ -61,7 +58,6 @@ class RegisterController extends Controller
             $cartItem->increment('quantity', $item['quantity']);
         }
     
-        // Vaciar el carrito de la sesión
         session()->forget('cart');
     
         return redirect()->intended(route('tienda.index'))->with('success', 'Usuario creado y autenticado correctamente.');
