@@ -3,10 +3,12 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-8 mt-3">
             <div class="card">
                 <div class="card-header">{{ __('Dirección de Envío') }}</div>
-
+                <div class="alert alert-info" role="alert">
+                    Por favor ten en cuenta que sólo hacemos envíos dentro de la Región Metropolitana y que el tiempo de entrega es de 24 horas a partir de la confirmación del pago.
+                </div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('direccion.store') }}">
                         @csrf
