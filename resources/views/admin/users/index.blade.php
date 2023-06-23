@@ -45,8 +45,12 @@
                                                 <input type="text" name="searchEmail" class="form-control mb-2" placeholder="Buscar por email..." value="{{ request()->get('searchEmail') }}">
                                             </div>
                                             <div class="col-md-3">
-                                                <input type="text" name="searchRole" class="form-control mb-2" placeholder="Buscar por rol..." value="{{ request()->get('searchRole') }}">
-                                            </div>
+                                                <select name="searchRole" class="form-control mb-2">
+                                                    <option value="">Todos los roles</option>
+                                                    <option value="admin" {{ request()->get('searchRole') === 'admin' ? 'selected' : '' }}>Admin</option>
+                                                    <option value="comprador" {{ request()->get('searchRole') === 'comprador' ? 'selected' : '' }}>Comprador</option>
+                                                </select>
+                                            </div>                                            
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12">

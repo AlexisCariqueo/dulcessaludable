@@ -40,8 +40,13 @@
                                                     <input type="text" name="searchCategory" class="form-control mb-2" placeholder="Buscar por categoría..." value="{{ request()->get('searchCategory') }}">
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <input type="text" name="searchStatus" class="form-control mb-2" placeholder="Buscar por estado..." value="{{ request()->get('searchStatus') }}">
-                                                </div>
+                                                    <select name="searchStatus" class="form-control mb-2">
+                                                        <option value="">Todos los estados</option>
+                                                        <option value="publicado" {{ request()->get('searchStatus') === 'publicado' ? 'selected' : '' }}>Publicado</option>
+                                                        <option value="borrador" {{ request()->get('searchStatus') === 'borrador' ? 'selected' : '' }}>Borrador</option>
+                                                        <option value="archivado" {{ request()->get('searchStatus') === 'archivado' ? 'selected' : '' }}>Archivado</option>
+                                                    </select>
+                                                </div>                                                
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-12">
