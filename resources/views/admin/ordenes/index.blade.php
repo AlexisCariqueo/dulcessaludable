@@ -53,7 +53,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <button class="btn btn-secondary float-end" type="submit">Buscar</button>
+                                                <button class="btn btn-success float-end" type="submit">Buscar</button>
                                                 <a href="{{ route('admin.ordenes.index') }}" class="btn btn-secondary float-end me-2">Limpiar</a>
                                             </div>
                                         </div>
